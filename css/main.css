@@ -1985,7 +1985,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cbc632;
+  background: #0fe575;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2080,7 +2080,6 @@ img:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: justify;
-  white-space: nowrap;
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
@@ -3079,4 +3078,10 @@ body {
   background: #fff;
   opacity: 0.95;
   min-height: 500px;
+}
+.post-toc .nav .nav-child {
+  display: block;
+}
+.post-toc ol {
+  font-size: 15px;
 }

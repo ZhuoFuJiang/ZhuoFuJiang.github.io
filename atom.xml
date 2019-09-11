@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhuofujiang.github.io/"/>
-  <updated>2019-09-11T03:07:02.631Z</updated>
+  <updated>2019-09-11T05:20:27.894Z</updated>
   <id>https://zhuofujiang.github.io/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>YearPlan</title>
+    <link href="https://zhuofujiang.github.io/2019/09/11/YearPlan/"/>
+    <id>https://zhuofujiang.github.io/2019/09/11/YearPlan/</id>
+    <published>2019-09-11T05:20:27.000Z</published>
+    <updated>2019-09-11T05:20:27.894Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="新的学期，新的开始！"><a href="#新的学期，新的开始！" class="headerlink" title="新的学期，新的开始！"></a>新的学期，新的开始！</h1><p>吾早前便已有建此博客之想法，但一者事物繁杂，身陷泥淖难以自拔，二者也未知从何开始，记录什么内容。但在学习人工智能、计算机基础过程中，尤以资料搜寻最耗时耗力，因此自今日始，若偶有所得，便当记录于此，与诸君共享，增一丝趣味罢了。</p><p>以下为己学习之路线规划，望己能秉持自身，勤勉苦学。</p><h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><ul><li><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a><em>操作系统</em></h3></li><li><h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a><em>计算机网络</em></h3></li><li><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><em>数据库</em></h3></li></ul><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul><li><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><em>数组</em></h3></li><li><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a><em>链表</em></h3></li><li><h3 id="队列与栈"><a href="#队列与栈" class="headerlink" title="队列与栈"></a><em>队列与栈</em></h3></li><li><h3 id="树与堆"><a href="#树与堆" class="headerlink" title="树与堆"></a><em>树与堆</em></h3></li><li><h3 id="图"><a href="#图" class="headerlink" title="图"></a><em>图</em></h3></li></ul><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul><li><h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><em>贪心</em></h3></li><li><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a><em>递归</em></h3></li><li><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><em>动态规划</em></h3></li></ul><h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><ul><li><h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a><em>线性代数</em></h3></li><li><h3 id="概率统计"><a href="#概率统计" class="headerlink" title="概率统计"></a><em>概率统计</em></h3></li><li><h3 id="数学分析"><a href="#数学分析" class="headerlink" title="数学分析"></a><em>数学分析</em></h3></li></ul><h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><ul><li><h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a><em>计算机视觉</em></h3></li><li><h3 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a><em>自然语言处理</em></h3></li></ul><h2 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h2><h2 id="天文地理"><a href="#天文地理" class="headerlink" title="天文地理"></a>天文地理</h2><ul><li><h3 id="宇宙"><a href="#宇宙" class="headerlink" title="宇宙"></a><em>宇宙</em></h3></li></ul><h2 id="人文历史"><a href="#人文历史" class="headerlink" title="人文历史"></a>人文历史</h2><ul><li><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a><em>历史</em></h3></li></ul><h2 id="杂文"><a href="#杂文" class="headerlink" title="杂文"></a>杂文</h2><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;新的学期，新的开始！&quot;&gt;&lt;a href=&quot;#新的学期，新的开始！&quot; class=&quot;headerlink&quot; title=&quot;新的学期，新的开始！&quot;&gt;&lt;/a&gt;新的学期，新的开始！&lt;/h1&gt;&lt;p&gt;吾早前便已有建此博客之想法，但一者事物繁杂，身陷泥淖难以自拔，二者也未知从何开始，记录什么内容。但在学习人工智能、计算机基础过程中，尤以资料搜寻最耗时耗力，因此自今日始，若偶有所得，便当记录于此，与诸君共享，增一丝趣味罢了。&lt;/p&gt;
+&lt;p&gt;以下为己学习之路线规划，望己能秉持自身，勤勉苦学。&lt;/p&gt;
+&lt;h2 id=&quot;计算机基础&quot;&gt;&lt;a href=&quot;#计算机基础&quot; class=&quot;headerlink&quot; title=&quot;计算机基础&quot;&gt;&lt;/a&gt;计算机基础&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;操作系统&quot;&gt;&lt;a href=&quot;#操作系统&quot; class=&quot;headerlink&quot; title=&quot;操作系统&quot;&gt;&lt;/a&gt;&lt;em&gt;操作系统&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;&lt;em&gt;计算机网络&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;&lt;em&gt;数据库&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;数据结构&quot;&gt;&lt;a href=&quot;#数据结构&quot; class=&quot;headerlink&quot; title=&quot;数据结构&quot;&gt;&lt;/a&gt;数据结构&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;&lt;em&gt;数组&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;链表&quot;&gt;&lt;a href=&quot;#链表&quot; class=&quot;headerlink&quot; title=&quot;链表&quot;&gt;&lt;/a&gt;&lt;em&gt;链表&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;队列与栈&quot;&gt;&lt;a href=&quot;#队列与栈&quot; class=&quot;headerlink&quot; title=&quot;队列与栈&quot;&gt;&lt;/a&gt;&lt;em&gt;队列与栈&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;树与堆&quot;&gt;&lt;a href=&quot;#树与堆&quot; class=&quot;headerlink&quot; title=&quot;树与堆&quot;&gt;&lt;/a&gt;&lt;em&gt;树与堆&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;图&quot;&gt;&lt;a href=&quot;#图&quot; class=&quot;headerlink&quot; title=&quot;图&quot;&gt;&lt;/a&gt;&lt;em&gt;图&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;算法&quot;&gt;&lt;a href=&quot;#算法&quot; class=&quot;headerlink&quot; title=&quot;算法&quot;&gt;&lt;/a&gt;算法&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;贪心&quot;&gt;&lt;a href=&quot;#贪心&quot; class=&quot;headerlink&quot; title=&quot;贪心&quot;&gt;&lt;/a&gt;&lt;em&gt;贪心&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;&lt;em&gt;递归&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;动态规划&quot;&gt;&lt;a href=&quot;#动态规划&quot; class=&quot;headerlink&quot; title=&quot;动态规划&quot;&gt;&lt;/a&gt;&lt;em&gt;动态规划&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;数学&quot;&gt;&lt;a href=&quot;#数学&quot; class=&quot;headerlink&quot; title=&quot;数学&quot;&gt;&lt;/a&gt;数学&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线性代数&quot; class=&quot;headerlink&quot; title=&quot;线性代数&quot;&gt;&lt;/a&gt;&lt;em&gt;线性代数&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;概率统计&quot;&gt;&lt;a href=&quot;#概率统计&quot; class=&quot;headerlink&quot; title=&quot;概率统计&quot;&gt;&lt;/a&gt;&lt;em&gt;概率统计&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;数学分析&quot;&gt;&lt;a href=&quot;#数学分析&quot; class=&quot;headerlink&quot; title=&quot;数学分析&quot;&gt;&lt;/a&gt;&lt;em&gt;数学分析&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;人工智能&quot;&gt;&lt;a href=&quot;#人工智能&quot; class=&quot;headerlink&quot; title=&quot;人工智能&quot;&gt;&lt;/a&gt;人工智能&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;计算机视觉&quot;&gt;&lt;a href=&quot;#计算机视觉&quot; class=&quot;headerlink&quot; title=&quot;计算机视觉&quot;&gt;&lt;/a&gt;&lt;em&gt;计算机视觉&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;自然语言处理&quot;&gt;&lt;a href=&quot;#自然语言处理&quot; class=&quot;headerlink&quot; title=&quot;自然语言处理&quot;&gt;&lt;/a&gt;&lt;em&gt;自然语言处理&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;信号与系统&quot;&gt;&lt;a href=&quot;#信号与系统&quot; class=&quot;headerlink&quot; title=&quot;信号与系统&quot;&gt;&lt;/a&gt;信号与系统&lt;/h2&gt;&lt;h2 id=&quot;天文地理&quot;&gt;&lt;a href=&quot;#天文地理&quot; class=&quot;headerlink&quot; title=&quot;天文地理&quot;&gt;&lt;/a&gt;天文地理&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;宇宙&quot;&gt;&lt;a href=&quot;#宇宙&quot; class=&quot;headerlink&quot; title=&quot;宇宙&quot;&gt;&lt;/a&gt;&lt;em&gt;宇宙&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;人文历史&quot;&gt;&lt;a href=&quot;#人文历史&quot; class=&quot;headerlink&quot; title=&quot;人文历史&quot;&gt;&lt;/a&gt;人文历史&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;历史&quot;&gt;&lt;a href=&quot;#历史&quot; class=&quot;headerlink&quot; title=&quot;历史&quot;&gt;&lt;/a&gt;&lt;em&gt;历史&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;杂文&quot;&gt;&lt;a href=&quot;#杂文&quot; class=&quot;headerlink&quot; title=&quot;杂文&quot;&gt;&lt;/a&gt;杂文&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="plan" scheme="https://zhuofujiang.github.io/categories/plan/"/>
+    
+    
+      <category term="life" scheme="https://zhuofujiang.github.io/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
