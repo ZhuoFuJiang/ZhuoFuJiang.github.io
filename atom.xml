@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhuofujiang.github.io/"/>
-  <updated>2019-09-11T05:20:27.894Z</updated>
+  <updated>2019-09-25T15:03:38.126Z</updated>
   <id>https://zhuofujiang.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>量子力学</title>
+    <link href="https://zhuofujiang.github.io/2019/09/25/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/"/>
+    <id>https://zhuofujiang.github.io/2019/09/25/量子力学/</id>
+    <published>2019-09-25T14:47:41.000Z</published>
+    <updated>2019-09-25T15:03:38.126Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="量子力学简史"><a href="#量子力学简史" class="headerlink" title="量子力学简史"></a>量子力学简史</h1><p>此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！</p><p><img src="量子力学.gif" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;量子力学简史&quot;&gt;&lt;a href=&quot;#量子力学简史&quot; class=&quot;headerlink&quot; title=&quot;量子力学简史&quot;&gt;&lt;/a&gt;量子力学简史&lt;/h1&gt;&lt;p&gt;此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！&lt;/p&gt;
+&lt;p&gt;&lt;img s
+      
+    
+    </summary>
+    
+    
+      <category term="physical" scheme="https://zhuofujiang.github.io/categories/physical/"/>
+    
+    
+      <category term="历史" scheme="https://zhuofujiang.github.io/tags/%E5%8E%86%E5%8F%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>YearPlan</title>
