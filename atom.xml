@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhuofujiang.github.io/"/>
-  <updated>2019-09-25T15:03:38.126Z</updated>
+  <updated>2019-09-26T02:42:59.015Z</updated>
   <id>https://zhuofujiang.github.io/</id>
   
   <author>
@@ -21,17 +21,20 @@
     <link href="https://zhuofujiang.github.io/2019/09/25/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/"/>
     <id>https://zhuofujiang.github.io/2019/09/25/量子力学/</id>
     <published>2019-09-25T14:47:41.000Z</published>
-    <updated>2019-09-25T15:03:38.126Z</updated>
+    <updated>2019-09-26T02:42:59.015Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="量子力学简史"><a href="#量子力学简史" class="headerlink" title="量子力学简史"></a>量子力学简史</h1><p>此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！</p><p><img src="量子力学.gif" alt></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="量子力学简史"><a href="#量子力学简史" class="headerlink" title="量子力学简史"></a>量子力学简史</h1><p>此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！</p><p>量子力学的诞生与光学研究有着紧密的联系，甚至可以说对光的研究直接催生出了量子力学。这部分历史大致可以分为三个阶段：</p><ul><li><p>第一次波粒大战</p><p>波动学说代表人物：<strong>胡克，惠更斯</strong></p><p>微粒学说代表人物：<strong>牛顿（色散实验）</strong></p></li></ul><a id="more"></a><ul><li><p>第二次波粒大战</p><p>波动学说代表人物：<strong>托马斯杨（双缝干涉）</strong>，<strong>菲涅尔（衍射）</strong>，<strong>麦克斯韦（电磁理论）</strong></p><p>微粒学说代表人物：<strong>马吕斯</strong>（<strong>偏振现象</strong>，而波动学说假设光是一种横波，解决此问题）</p></li><li><p>第三次波粒大战</p><p>波动学说代表人物：<strong>德布罗意（相波）</strong></p><p>微粒学说代表人物：<strong>爱因斯坦</strong>（<strong>光电效应</strong>，提出光量子），<strong>康普顿（康普顿效应）</strong></p></li></ul><p>而爱因斯坦的光量子假说，实质上是引入了普朗克量子假设的结果，而量子力学的诞生也正是由普朗克拉开了序幕。</p><p>量子力学发展也可以分为三个阶段：</p><ul><li><p>量子初现</p><p>普朗克研究维恩定律与瑞利-金斯定律的基础上，假设能量是不连续的，创造性地提出了量子的概念，并通过普朗克方程描述了单个量子的能量。<br>$$<br>E = hv<br>$$</p></li><li><p>量子巩固</p><p>这是量子力学发展的黄金时期，涌现出了相当多的优秀年轻科学家。</p><p><strong>卢瑟福</strong>：于1911年提出<strong>原子模型</strong>，原子由原子核和电子组成。但是这种模型在经典电磁学理论中，由于不断释放辐射能量，最终将会崩塌。</p><p><strong>玻尔</strong>：于1913年，完成原子模型三论文，并在之后提出<strong>量子模型</strong>。在此模型中，能量与电子运动方向均不连续；为了解决波粒问题，提出<strong>互补原理</strong>，即电子是波还是粒子，取决于我们观测的方式。</p><p><strong>德布罗意</strong>：于1923年提出<strong>相波</strong>的概念，发现电子以速度v运动时，伴随着速度为c^2/v的波。<br>$$<br>\lambda = (c^2/v_1)/(mc^2/h)=h/mv_0<br>$$<br><strong>海森堡</strong>：于1925年提出<strong>矩阵力学</strong>（值得一提的是，海森堡本人重新发明了矩阵）；1927年提出<strong>测不确定性</strong>，永远不可能同时观测到一个电子的动量及位置。</p><p><strong>薛定谔</strong>：于1926年提出<strong>波动方程</strong>，事实证明其与海森堡的矩阵力学实质上是同一体系，波恩认为其中的波函数是一种概率分布。</p><p><strong>狄拉克</strong>：于1928年将相对论引入量子力学，提出<strong>狄拉克方程</strong>。</p></li><li><p>新的征途</p><p>对于量子力学背后的解释，除了哥本哈根解释外，还有很多其他观点，下述只列举部分较为著名的解释观点。</p><p>冯诺依曼：无限复归链</p><p>维格纳：意识论</p><p>埃弗莱特：多世界理论</p><p>盖尔曼：退相干理论</p><p>玻姆：隐变量</p><p>贝尔：贝尔不等式</p></li></ul><p>量子力学仍然在发展，相信终有一天，我们能够真正抓住这个幽灵的秘密！</p><p><img src="量子力学.gif" alt></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;量子力学简史&quot;&gt;&lt;a href=&quot;#量子力学简史&quot; class=&quot;headerlink&quot; title=&quot;量子力学简史&quot;&gt;&lt;/a&gt;量子力学简史&lt;/h1&gt;&lt;p&gt;此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！&lt;/p&gt;
-&lt;p&gt;&lt;img s
-      
+      &lt;h1 id=&quot;量子力学简史&quot;&gt;&lt;a href=&quot;#量子力学简史&quot; class=&quot;headerlink&quot; title=&quot;量子力学简史&quot;&gt;&lt;/a&gt;量子力学简史&lt;/h1&gt;&lt;p&gt;此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！&lt;/p&gt;
+&lt;p&gt;量子力学的诞生与光学研究有着紧密的联系，甚至可以说对光的研究直接催生出了量子力学。这部分历史大致可以分为三个阶段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一次波粒大战&lt;/p&gt;
+&lt;p&gt;波动学说代表人物：&lt;strong&gt;胡克，惠更斯&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;微粒学说代表人物：&lt;strong&gt;牛顿（色散实验）&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -48,47 +51,14 @@
     <link href="https://zhuofujiang.github.io/2019/09/11/YearPlan/"/>
     <id>https://zhuofujiang.github.io/2019/09/11/YearPlan/</id>
     <published>2019-09-11T05:20:27.000Z</published>
-    <updated>2019-09-11T05:20:27.894Z</updated>
+    <updated>2019-09-26T01:05:20.227Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="新的学期，新的开始！"><a href="#新的学期，新的开始！" class="headerlink" title="新的学期，新的开始！"></a>新的学期，新的开始！</h1><p>吾早前便已有建此博客之想法，但一者事物繁杂，身陷泥淖难以自拔，二者也未知从何开始，记录什么内容。但在学习人工智能、计算机基础过程中，尤以资料搜寻最耗时耗力，因此自今日始，若偶有所得，便当记录于此，与诸君共享，增一丝趣味罢了。</p><p>以下为己学习之路线规划，望己能秉持自身，勤勉苦学。</p><h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><ul><li><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a><em>操作系统</em></h3></li><li><h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a><em>计算机网络</em></h3></li><li><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><em>数据库</em></h3></li></ul><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul><li><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><em>数组</em></h3></li><li><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a><em>链表</em></h3></li><li><h3 id="队列与栈"><a href="#队列与栈" class="headerlink" title="队列与栈"></a><em>队列与栈</em></h3></li><li><h3 id="树与堆"><a href="#树与堆" class="headerlink" title="树与堆"></a><em>树与堆</em></h3></li><li><h3 id="图"><a href="#图" class="headerlink" title="图"></a><em>图</em></h3></li></ul><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul><li><h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><em>贪心</em></h3></li><li><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a><em>递归</em></h3></li><li><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><em>动态规划</em></h3></li></ul><h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><ul><li><h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a><em>线性代数</em></h3></li><li><h3 id="概率统计"><a href="#概率统计" class="headerlink" title="概率统计"></a><em>概率统计</em></h3></li><li><h3 id="数学分析"><a href="#数学分析" class="headerlink" title="数学分析"></a><em>数学分析</em></h3></li></ul><h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><ul><li><h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a><em>计算机视觉</em></h3></li><li><h3 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a><em>自然语言处理</em></h3></li></ul><h2 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h2><h2 id="天文地理"><a href="#天文地理" class="headerlink" title="天文地理"></a>天文地理</h2><ul><li><h3 id="宇宙"><a href="#宇宙" class="headerlink" title="宇宙"></a><em>宇宙</em></h3></li></ul><h2 id="人文历史"><a href="#人文历史" class="headerlink" title="人文历史"></a>人文历史</h2><ul><li><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a><em>历史</em></h3></li></ul><h2 id="杂文"><a href="#杂文" class="headerlink" title="杂文"></a>杂文</h2><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<h1 id="新的学期，新的开始！"><a href="#新的学期，新的开始！" class="headerlink" title="新的学期，新的开始！"></a>新的学期，新的开始！</h1><p>吾早前便已有建此博客之想法，但一者事物繁杂，身陷泥淖难以自拔，二者也未知从何开始，记录什么内容。但在学习人工智能、计算机基础过程中，尤以资料搜寻最耗时耗力，因此自今日始，若偶有所得，便当记录于此，与诸君共享，增一丝趣味罢了。</p><p>以下为己学习之路线规划，望己能秉持自身，勤勉苦学。</p><a id="more"></a><h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><ul><li><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a><em>操作系统</em></h3></li><li><h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a><em>计算机网络</em></h3></li><li><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><em>数据库</em></h3></li></ul><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul><li><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><em>数组</em></h3></li><li><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a><em>链表</em></h3></li><li><h3 id="队列与栈"><a href="#队列与栈" class="headerlink" title="队列与栈"></a><em>队列与栈</em></h3></li><li><h3 id="树与堆"><a href="#树与堆" class="headerlink" title="树与堆"></a><em>树与堆</em></h3></li><li><h3 id="图"><a href="#图" class="headerlink" title="图"></a><em>图</em></h3></li></ul><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul><li><h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><em>贪心</em></h3></li><li><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a><em>递归</em></h3></li><li><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><em>动态规划</em></h3></li></ul><h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><ul><li><h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a><em>线性代数</em></h3></li><li><h3 id="概率统计"><a href="#概率统计" class="headerlink" title="概率统计"></a><em>概率统计</em></h3></li><li><h3 id="数学分析"><a href="#数学分析" class="headerlink" title="数学分析"></a><em>数学分析</em></h3></li></ul><h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><ul><li><h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a><em>计算机视觉</em></h3></li><li><h3 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a><em>自然语言处理</em></h3></li></ul><h2 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h2><h2 id="天文地理"><a href="#天文地理" class="headerlink" title="天文地理"></a>天文地理</h2><ul><li><h3 id="宇宙"><a href="#宇宙" class="headerlink" title="宇宙"></a><em>宇宙</em></h3></li></ul><h2 id="人文历史"><a href="#人文历史" class="headerlink" title="人文历史"></a>人文历史</h2><ul><li><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a><em>历史</em></h3></li></ul><h2 id="杂文"><a href="#杂文" class="headerlink" title="杂文"></a>杂文</h2>]]></content>
     
     <summary type="html">
     
       &lt;h1 id=&quot;新的学期，新的开始！&quot;&gt;&lt;a href=&quot;#新的学期，新的开始！&quot; class=&quot;headerlink&quot; title=&quot;新的学期，新的开始！&quot;&gt;&lt;/a&gt;新的学期，新的开始！&lt;/h1&gt;&lt;p&gt;吾早前便已有建此博客之想法，但一者事物繁杂，身陷泥淖难以自拔，二者也未知从何开始，记录什么内容。但在学习人工智能、计算机基础过程中，尤以资料搜寻最耗时耗力，因此自今日始，若偶有所得，便当记录于此，与诸君共享，增一丝趣味罢了。&lt;/p&gt;
 &lt;p&gt;以下为己学习之路线规划，望己能秉持自身，勤勉苦学。&lt;/p&gt;
-&lt;h2 id=&quot;计算机基础&quot;&gt;&lt;a href=&quot;#计算机基础&quot; class=&quot;headerlink&quot; title=&quot;计算机基础&quot;&gt;&lt;/a&gt;计算机基础&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;操作系统&quot;&gt;&lt;a href=&quot;#操作系统&quot; class=&quot;headerlink&quot; title=&quot;操作系统&quot;&gt;&lt;/a&gt;&lt;em&gt;操作系统&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;&lt;em&gt;计算机网络&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;数据库&quot;&gt;&lt;a href=&quot;#数据库&quot; class=&quot;headerlink&quot; title=&quot;数据库&quot;&gt;&lt;/a&gt;&lt;em&gt;数据库&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;数据结构&quot;&gt;&lt;a href=&quot;#数据结构&quot; class=&quot;headerlink&quot; title=&quot;数据结构&quot;&gt;&lt;/a&gt;数据结构&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;&lt;em&gt;数组&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;链表&quot;&gt;&lt;a href=&quot;#链表&quot; class=&quot;headerlink&quot; title=&quot;链表&quot;&gt;&lt;/a&gt;&lt;em&gt;链表&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;队列与栈&quot;&gt;&lt;a href=&quot;#队列与栈&quot; class=&quot;headerlink&quot; title=&quot;队列与栈&quot;&gt;&lt;/a&gt;&lt;em&gt;队列与栈&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;树与堆&quot;&gt;&lt;a href=&quot;#树与堆&quot; class=&quot;headerlink&quot; title=&quot;树与堆&quot;&gt;&lt;/a&gt;&lt;em&gt;树与堆&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;图&quot;&gt;&lt;a href=&quot;#图&quot; class=&quot;headerlink&quot; title=&quot;图&quot;&gt;&lt;/a&gt;&lt;em&gt;图&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;算法&quot;&gt;&lt;a href=&quot;#算法&quot; class=&quot;headerlink&quot; title=&quot;算法&quot;&gt;&lt;/a&gt;算法&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;贪心&quot;&gt;&lt;a href=&quot;#贪心&quot; class=&quot;headerlink&quot; title=&quot;贪心&quot;&gt;&lt;/a&gt;&lt;em&gt;贪心&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;&lt;em&gt;递归&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;动态规划&quot;&gt;&lt;a href=&quot;#动态规划&quot; class=&quot;headerlink&quot; title=&quot;动态规划&quot;&gt;&lt;/a&gt;&lt;em&gt;动态规划&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;数学&quot;&gt;&lt;a href=&quot;#数学&quot; class=&quot;headerlink&quot; title=&quot;数学&quot;&gt;&lt;/a&gt;数学&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线性代数&quot; class=&quot;headerlink&quot; title=&quot;线性代数&quot;&gt;&lt;/a&gt;&lt;em&gt;线性代数&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;概率统计&quot;&gt;&lt;a href=&quot;#概率统计&quot; class=&quot;headerlink&quot; title=&quot;概率统计&quot;&gt;&lt;/a&gt;&lt;em&gt;概率统计&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;数学分析&quot;&gt;&lt;a href=&quot;#数学分析&quot; class=&quot;headerlink&quot; title=&quot;数学分析&quot;&gt;&lt;/a&gt;&lt;em&gt;数学分析&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;人工智能&quot;&gt;&lt;a href=&quot;#人工智能&quot; class=&quot;headerlink&quot; title=&quot;人工智能&quot;&gt;&lt;/a&gt;人工智能&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;计算机视觉&quot;&gt;&lt;a href=&quot;#计算机视觉&quot; class=&quot;headerlink&quot; title=&quot;计算机视觉&quot;&gt;&lt;/a&gt;&lt;em&gt;计算机视觉&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;自然语言处理&quot;&gt;&lt;a href=&quot;#自然语言处理&quot; class=&quot;headerlink&quot; title=&quot;自然语言处理&quot;&gt;&lt;/a&gt;&lt;em&gt;自然语言处理&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;信号与系统&quot;&gt;&lt;a href=&quot;#信号与系统&quot; class=&quot;headerlink&quot; title=&quot;信号与系统&quot;&gt;&lt;/a&gt;信号与系统&lt;/h2&gt;&lt;h2 id=&quot;天文地理&quot;&gt;&lt;a href=&quot;#天文地理&quot; class=&quot;headerlink&quot; title=&quot;天文地理&quot;&gt;&lt;/a&gt;天文地理&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;宇宙&quot;&gt;&lt;a href=&quot;#宇宙&quot; class=&quot;headerlink&quot; title=&quot;宇宙&quot;&gt;&lt;/a&gt;&lt;em&gt;宇宙&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;人文历史&quot;&gt;&lt;a href=&quot;#人文历史&quot; class=&quot;headerlink&quot; title=&quot;人文历史&quot;&gt;&lt;/a&gt;人文历史&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;历史&quot;&gt;&lt;a href=&quot;#历史&quot; class=&quot;headerlink&quot; title=&quot;历史&quot;&gt;&lt;/a&gt;&lt;em&gt;历史&lt;/em&gt;&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;杂文&quot;&gt;&lt;a href=&quot;#杂文&quot; class=&quot;headerlink&quot; title=&quot;杂文&quot;&gt;&lt;/a&gt;杂文&lt;/h2&gt;
     
     </summary>
     
@@ -105,16 +75,15 @@
     <link href="https://zhuofujiang.github.io/2019/09/10/hello-world/"/>
     <id>https://zhuofujiang.github.io/2019/09/10/hello-world/</id>
     <published>2019-09-10T14:52:09.672Z</published>
-    <updated>2019-09-11T03:07:02.631Z</updated>
+    <updated>2019-09-26T01:05:42.212Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><a id="more"></a><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
