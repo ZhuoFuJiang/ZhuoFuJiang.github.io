@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="创建型模式之工厂模式此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。 简单工厂模式动机考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继承基类后不同的子类修改了部分属性从而使得它们可以呈现不同的外观，如果我们希望在使用这些按钮时，不需要知道这些具体按钮类的名字，只需要知">
+<meta name="description" content="创建型模式之工厂模式此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。 此篇博客主要参考以下文档： https://design-patterns.readthedocs.io/zh_CN/latest/ 简单工厂模式动机考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继">
 <meta name="keywords" content="Java,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java工厂模式">
 <meta property="og:url" content="https://zhuofujiang.github.io/2019/10/12/Java工厂模式/index.html">
 <meta property="og:site_name" content="JoinApper">
-<meta property="og:description" content="创建型模式之工厂模式此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。 简单工厂模式动机考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继承基类后不同的子类修改了部分属性从而使得它们可以呈现不同的外观，如果我们希望在使用这些按钮时，不需要知道这些具体按钮类的名字，只需要知">
+<meta property="og:description" content="创建型模式之工厂模式此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。 此篇博客主要参考以下文档： https://design-patterns.readthedocs.io/zh_CN/latest/ 简单工厂模式动机考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://design-patterns.readthedocs.io/zh_CN/latest/_images/SimpleFactory.jpg">
 <meta property="og:image" content="https://zhuofujiang.github.io/2019/10/12/Java工厂模式/CarFactory.png">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="https://zhuofujiang.github.io/2019/10/12/Java工厂模式/FactoryMethod.png">
 <meta property="og:image" content="https://design-patterns.readthedocs.io/zh_CN/latest/_images/AbatractFactory.jpg">
 <meta property="og:image" content="https://zhuofujiang.github.io/2019/10/12/Java工厂模式/AbstractFactory.png">
-<meta property="og:updated_time" content="2019-10-12T14:30:14.295Z">
+<meta property="og:updated_time" content="2019-10-13T14:30:37.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java工厂模式">
-<meta name="twitter:description" content="创建型模式之工厂模式此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。 简单工厂模式动机考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继承基类后不同的子类修改了部分属性从而使得它们可以呈现不同的外观，如果我们希望在使用这些按钮时，不需要知道这些具体按钮类的名字，只需要知">
+<meta name="twitter:description" content="创建型模式之工厂模式此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。 此篇博客主要参考以下文档： https://design-patterns.readthedocs.io/zh_CN/latest/ 简单工厂模式动机考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继">
 <meta name="twitter:image" content="https://design-patterns.readthedocs.io/zh_CN/latest/_images/SimpleFactory.jpg">
 
 
@@ -357,6 +357,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/12/Java工厂模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/12/Java工厂模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -382,6 +392,8 @@
 
       
         <h1 id="创建型模式之工厂模式"><a href="#创建型模式之工厂模式" class="headerlink" title="创建型模式之工厂模式"></a>创建型模式之工厂模式</h1><p>此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。</p>
+<p>此篇博客主要参考以下文档：</p>
+<p><a href="https://design-patterns.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/</a></p>
 <h2 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h2><h3 id="模式动机"><a href="#模式动机" class="headerlink" title="模式动机"></a>模式动机</h3><p>考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继承基类后不同的子类修改了部分属性从而使得它们可以呈现不同的外观，如果我们希望在使用这些按钮时，不需要知道这些具体按钮类的名字，只需要知道表示该按钮类的一个参数，并提供一个调用方便的方法，把该参数传入方法即可返回一个相应的按钮对象，此时，就可以使用简单工厂模式。</p>
 <a id="more"></a>
 <h3 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h3><p>简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例，具体实现时可以通过调用不同方法创建实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。</p>
@@ -528,8 +540,6 @@
 <li>抽象工厂模式适用情况包括：一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节；系统中有多于一个的产品族，而每次只使用其中某一产品族；属于同一个产品族的产品将在一起使用；系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
 </ul>
 <h2 id="三种方式对比"><a href="#三种方式对比" class="headerlink" title="三种方式对比"></a>三种方式对比</h2><p>总的来说，三种工厂模式核心要点各不相同。在简单工厂中，一个工厂可以通过不同的参数创建不同的产品；在工厂方法中，不同的产品则要通过不同的工厂创建，相对于简单工厂而言，扩展性更强，但同时会增加类太多难以管理的风险；在抽象工厂中，其主要关注产品族的创建，而非单个产品，增加新的具体工厂和产品族很方便，但是增加新的产品等级结构时很复杂。</p>
-<p>此篇博客主要参考以下文档：</p>
-<p><a href="https://design-patterns.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/</a></p>
 
       
     </div>
@@ -549,7 +559,7 @@
   <p><span>本文标题:</span><a href="/2019/10/12/Java工厂模式/">Java工厂模式</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 JoinApper 的个人博客">JoinApper</a></p>
   <p><span>发布时间:</span>2019年10月12日 - 22:10</p>
-  <p><span>最后更新:</span>2019年10月12日 - 22:10</p>
+  <p><span>最后更新:</span>2019年10月13日 - 22:10</p>
   <p><span>原始链接:</span><a href="/2019/10/12/Java工厂模式/" title="Java工厂模式">https://zhuofujiang.github.io/2019/10/12/Java工厂模式/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zhuofujiang.github.io/2019/10/12/Java工厂模式/" aria-label="复制成功！"></i></span>
   </p>
@@ -607,6 +617,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/10/13/Java单例模式/" rel="prev" title="Java单例模式">
+                Java单例模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -634,6 +648,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -685,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -949,6 +966,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'uKYwPL4HW0x5whomi3E5hp0s-gzGzoHsz',
+        appKey: 'qWRrTtnyTiE0eu0mo0R5SFez',
+        placeholder: 'Just go go',
+        avatar:'/images/logo.jpg',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
