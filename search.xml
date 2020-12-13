@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Mysql基础</title>
+    <url>/2019/11/10/Mysql%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="Mysql基础"><a href="#Mysql基础" class="headerlink" title="Mysql基础"></a>Mysql基础</h1><h2 id="Mysql管理"><a href="#Mysql管理" class="headerlink" title="Mysql管理"></a>Mysql管理</h2><h3 id="Mysql服务的启动和停止"><a href="#Mysql服务的启动和停止" class="headerlink" title="Mysql服务的启动和停止"></a>Mysql服务的启动和停止</h3><ul>
+<li>计算机——右击管理——服务</li>
+<li>通过管理员身份运行<ul>
+<li>net start 服务名（启动服务）</li>
+<li>net stop 服务名（停止服务）</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="Mysql服务的登录和退出"><a href="#Mysql服务的登录和退出" class="headerlink" title="Mysql服务的登录和退出"></a>Mysql服务的登录和退出</h3><ul>
+<li>通过mysql自带的客户端（只限于root用户）</li>
+<li>通过客户端命令输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">登录：</span><br><span class="line">mysql -h 主机名 -P 端口号 -u 用户名 -p 密码</span><br><span class="line">退出：</span><br><span class="line">exit或ctrl+c</span><br></pre></td></tr></table></figure>
+<h2 id="Mysql语法规范及常用命令"><a href="#Mysql语法规范及常用命令" class="headerlink" title="Mysql语法规范及常用命令"></a>Mysql语法规范及常用命令</h2><h3 id="Mysql语法规范"><a href="#Mysql语法规范" class="headerlink" title="Mysql语法规范"></a>Mysql语法规范</h3><ol>
+<li>不区分大小写,但建议关键字大写，表名、列名小写</li>
+<li>每条命令最好用分号结尾</li>
+<li>每条命令根据需要，可以进行缩进或换行</li>
+<li>注释</li>
+</ol>
+<ul>
+<li>单行注释：#注释文字</li>
+<li>单行注释：– 注释文字</li>
+<li>多行注释：/<em> 注释文字  </em>/</li>
+</ul>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show databases； 查看所有的数据库</span><br><span class="line">use 库名； 打开指定 的库</span><br><span class="line">show tables ; 显示库中的所有表</span><br><span class="line">show tables from 库名;显示指定库中的所有表</span><br><span class="line">create table 表名(</span><br><span class="line">	字段名 字段类型,	</span><br><span class="line">	字段名 字段类型</span><br><span class="line">); 创建表</span><br><span class="line"></span><br><span class="line">desc 表名; 查看指定表的结构</span><br><span class="line">select * from 表名;显示表中的所有数据</span><br></pre></td></tr></table></figure>
+<h2 id="Mysql语言"><a href="#Mysql语言" class="headerlink" title="Mysql语言"></a>Mysql语言</h2><p>Mysql中的语言主要可以分为如下四种：</p>
+<ul>
+<li>DQL（Data Query Language）：数据查询语言<pre><code>**select** 
+</code></pre></li>
+<li>DML(Data Manipulate Language)：数据操作语言<pre><code>**insert 、update、delete**
+</code></pre></li>
+<li>DDL（Data Define Languge）：数据定义语言<pre><code>**create、drop、alter**
+</code></pre></li>
+<li>TCL（Transaction Control Language）：事务控制语言<pre><code>**commit、rollback**
+</code></pre></li>
+</ul>
+<h3 id="DQL语言"><a href="#DQL语言" class="headerlink" title="DQL语言"></a>DQL语言</h3><h4 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h4><ul>
+<li>单表查询：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select 要查询的字段|表达式|常量值|函数 from 表 </span><br><span class="line">where 条件 </span><br><span class="line">group by</span><br><span class="line">having </span><br><span class="line">order by 排序的字段|表达式|函数|别名 【asc|desc】;</span><br></pre></td></tr></table></figure>
+<p>常见表达式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一、条件表达式</span><br><span class="line">	示例：salary&gt;10000</span><br><span class="line">	条件运算符：</span><br><span class="line">	&gt; &lt; &gt;= &lt;= = != &lt;&gt;</span><br><span class="line"></span><br><span class="line">二、逻辑表达式</span><br><span class="line">示例：salary&gt;10000 &amp;&amp; salary&lt;20000</span><br><span class="line"></span><br><span class="line">逻辑运算符：</span><br><span class="line">and（&amp;&amp;）:两个条件如果同时成立，结果为true，否则为false</span><br><span class="line">or(||)：两个条件只要有一个成立，结果为true，否则为false</span><br><span class="line">not(!)：如果条件成立，则not后为false，否则为true</span><br><span class="line"></span><br><span class="line">三、模糊查询</span><br><span class="line">示例：last_name like &apos;a%&apos;</span><br></pre></td></tr></table></figure>
+<p>常见函数如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一、单行函数</span><br><span class="line">1、字符函数</span><br><span class="line">    concat拼接</span><br><span class="line">    substr截取子串</span><br><span class="line">    upper转换成大写</span><br><span class="line">    lower转换成小写</span><br><span class="line">    trim去前后指定的空格和字符</span><br><span class="line">    ltrim去左边空格</span><br><span class="line">    rtrim去右边空格</span><br><span class="line">    replace替换</span><br><span class="line">    lpad左填充</span><br><span class="line">    rpad右填充</span><br><span class="line">    instr返回子串第一次出现的索引</span><br><span class="line">    length 获取字节个数</span><br><span class="line">2、数学函数</span><br><span class="line">	round 四舍五入</span><br><span class="line">	rand 随机数</span><br><span class="line">	floor向下取整</span><br><span class="line">	ceil向上取整</span><br><span class="line">	mod取余</span><br><span class="line">	truncate截断</span><br><span class="line">3、日期函数</span><br><span class="line">	now当前系统日期+时间</span><br><span class="line">	curdate当前系统日期</span><br><span class="line">	curtime当前系统时间</span><br><span class="line">	str_to_date 将字符转换成日期</span><br><span class="line">	date_format将日期转换成字符</span><br><span class="line">4、流程控制函数</span><br><span class="line">	if 处理双分支</span><br><span class="line">	case语句 处理多分支</span><br><span class="line">		情况1：处理等值判断</span><br><span class="line">		情况2：处理条件判断</span><br><span class="line">5、其他函数</span><br><span class="line">	version版本</span><br><span class="line">	database当前库</span><br><span class="line">	user当前连接用户</span><br><span class="line">二、分组函数</span><br><span class="line">	sum 求和</span><br><span class="line">	max 最大值</span><br><span class="line">	min 最小值</span><br><span class="line">	avg 平均值</span><br><span class="line">	count 计数</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多表连接查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select 字段，...</span><br><span class="line">from 表1</span><br><span class="line">【inner|left outer|right outer|cross】join 表2 on  连接条件</span><br><span class="line">【inner|left outer|right outer|cross】join 表3 on  连接条件</span><br><span class="line">【where 筛选条件】</span><br><span class="line">【group by 分组字段】</span><br><span class="line">【having 分组后的筛选条件】</span><br><span class="line">【order by 排序的字段或表达式】</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子查询</li>
+</ul>
+<p>一条查询语句中又嵌套了另一条完整的select语句，其中被嵌套的select语句，称为子查询或内查询<br>在外面的查询语句，称为主查询或外查询。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">特点：</span><br><span class="line">1、子查询都放在小括号内</span><br><span class="line">2、子查询可以放在from后面、select后面、where后面、having后面，但一般放在条件的右侧</span><br><span class="line">3、子查询优先于主查询执行，主查询使用了子查询的执行结果</span><br><span class="line">4、子查询根据查询结果的行数不同分为以下两类：</span><br><span class="line">① 单行子查询</span><br><span class="line">	结果集只有一行</span><br><span class="line">	一般搭配单行操作符使用：&gt; &lt; = &lt;&gt; &gt;= &lt;= </span><br><span class="line">	非法使用子查询的情况：</span><br><span class="line">	a、子查询的结果为一组值</span><br><span class="line">	b、子查询的结果为空</span><br><span class="line">② 多行子查询</span><br><span class="line">	结果集有多行</span><br><span class="line">	一般搭配多行操作符使用：any、all、in、not in</span><br><span class="line">	in： 属于子查询结果中的任意一个就行</span><br><span class="line">	any和all往往可以用其他查询代替</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分页查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select 字段|表达式,...</span><br><span class="line">from 表</span><br><span class="line">【where 条件】</span><br><span class="line">【group by 分组字段】</span><br><span class="line">【having 条件】</span><br><span class="line">【order by 排序的字段】</span><br><span class="line">limit 【起始的条目索引，】条目数;</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">通常起始条目从0开始</span><br><span class="line">公式：select * from  表 limit （page-1）*sizePerPage,sizePerPage</span><br><span class="line">每页显示条目数sizePerPage</span><br><span class="line">要显示的页数 page</span><br></pre></td></tr></table></figure>
+<ul>
+<li>联合查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select 字段|常量|表达式|函数 【from 表】 【where 条件】 union 【all】</span><br><span class="line">select 字段|常量|表达式|函数 【from 表】 【where 条件】 union 【all】</span><br><span class="line">select 字段|常量|表达式|函数 【from 表】 【where 条件】 union  【all】</span><br><span class="line">.....</span><br><span class="line">select 字段|常量|表达式|函数 【from 表】 【where 条件】</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">1、多条查询语句的查询的列数必须是一致的</span><br><span class="line">2、多条查询语句的查询的列的类型几乎相同</span><br><span class="line">3、union代表去重，union all代表不去重</span><br></pre></td></tr></table></figure>
+<h3 id="DML语言"><a href="#DML语言" class="headerlink" title="DML语言"></a>DML语言</h3><h4 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insert into 表名(字段名，...) values(值1，...);</span><br></pre></td></tr></table></figure>
+<h4 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h4><ul>
+<li>修改单表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">update 表名 set 字段=新值,字段=新值 【where 条件】</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改多表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">update 表1 别名1,表2 别名2</span><br><span class="line">set 字段=新值，字段=新值</span><br><span class="line">where 连接条件</span><br><span class="line">and 筛选条件</span><br></pre></td></tr></table></figure>
+<h4 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h4><ul>
+<li>删除单表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">delete from 表名 【where 筛选条件】</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除多表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">delete 别名1，别名2</span><br><span class="line">from 表1 别名1，表2 别名2</span><br><span class="line">where 连接条件</span><br><span class="line">and 筛选条件;</span><br></pre></td></tr></table></figure>
+<h4 id="Truncate"><a href="#Truncate" class="headerlink" title="Truncate"></a>Truncate</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">truncate table 表名;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：面试中常常会问两者的区别</strong></p>
+<ol>
+<li><strong>truncate不能加where条件，而delete可以加where条件</strong></li>
+<li><strong>truncate的效率高一丢丢</strong></li>
+<li><strong>truncate 删除带自增长的列的表后，如果再插入数据，数据从1开始</strong><br><strong>delete 删除带自增长列的表后，如果再插入数据，数据从上一次的断点处开始</strong></li>
+<li><strong>truncate删除不能回滚，delete删除可以回滚</strong></li>
+</ol>
+<h3 id="DDL语言"><a href="#DDL语言" class="headerlink" title="DDL语言"></a>DDL语言</h3><h4 id="库的管理"><a href="#库的管理" class="headerlink" title="库的管理"></a>库的管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建库</span><br><span class="line">create database 库名;</span><br><span class="line">删除库</span><br><span class="line">drop database 库名;</span><br></pre></td></tr></table></figure>
+<h4 id="表的管理"><a href="#表的管理" class="headerlink" title="表的管理"></a>表的管理</h4><h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名&#123;</span><br><span class="line">	字段名 类型 约束,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter table 表名 add|modify|drop|change column 字段名 【字段类型】;</span><br><span class="line"></span><br><span class="line">修改字段名</span><br><span class="line">alter table 表名 change column 旧字段名 新字段名 类型;</span><br><span class="line"></span><br><span class="line">修改表名</span><br><span class="line">alter table 表名 rename to 新表名;</span><br><span class="line"></span><br><span class="line">修改字段类型和约束</span><br><span class="line">alter table 表名 modify cloumn 字段名 类型 约束;</span><br><span class="line"></span><br><span class="line">添加字段</span><br><span class="line">alter table 表名 add column 字段名 类型 【位置】;</span><br><span class="line"></span><br><span class="line">删除字段</span><br><span class="line">alter table 表名 drop column 字段名;</span><br></pre></td></tr></table></figure>
+<h5 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop table if exists 表名;</span><br></pre></td></tr></table></figure>
+<h3 id="TCL语言"><a href="#TCL语言" class="headerlink" title="TCL语言"></a>TCL语言</h3><h4 id="事务基础使用"><a href="#事务基础使用" class="headerlink" title="事务基础使用"></a>事务基础使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set autocommit=0;</span><br><span class="line">start transaction;</span><br><span class="line">commit;</span><br><span class="line">rollback;</span><br><span class="line"></span><br><span class="line">savepoint  断点</span><br><span class="line">commit to 断点</span><br><span class="line">rollback to 断点</span><br></pre></td></tr></table></figure>
+<h4 id="隔离级别设置"><a href="#隔离级别设置" class="headerlink" title="隔离级别设置"></a>隔离级别设置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set session|global  transaction isolation level 隔离级别名;</span><br><span class="line"></span><br><span class="line">查看隔离级别</span><br><span class="line">select @@tx_isolation;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：如何避免事务的并发问题通过设置事务的隔离级别</strong></p>
+<ol>
+<li><strong>READ UNCOMMITTED</strong></li>
+<li><strong>READ COMMITTED 可以避免脏读</strong></li>
+<li><strong>REPEATABLE READ 可以避免脏读、不可重复读和一部分幻读</strong></li>
+<li><strong>SERIALIZABLE可以避免脏读、不可重复读和幻读</strong></li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql进阶</title>
+    <url>/2019/11/10/Mysql%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<h1 id="Mysql进阶"><a href="#Mysql进阶" class="headerlink" title="Mysql进阶"></a>Mysql进阶</h1><h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create view 视图名</span><br><span class="line">as 查询语句;</span><br><span class="line"></span><br><span class="line">1、sql语句提高重用性，效率高</span><br><span class="line">2、和表实现了分离，提高了安全性</span><br><span class="line">3、视图仅仅保存sql逻辑，不占用物理空间</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a>更新视图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方式一：</span><br><span class="line">create or replace view 视图名</span><br><span class="line">as 查询语句;</span><br><span class="line"></span><br><span class="line">方式二：</span><br><span class="line">alter view 视图名</span><br><span class="line">as 查询语句;</span><br></pre></td></tr></table></figure>
+<h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop view 视图名1,视图名2,...;</span><br></pre></td></tr></table></figure>
+<h3 id="查看视图"><a href="#查看视图" class="headerlink" title="查看视图"></a>查看视图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">desc 视图名;</span><br><span class="line">show create view 视图名;</span><br></pre></td></tr></table></figure>
+<h3 id="视图数据增删改查"><a href="#视图数据增删改查" class="headerlink" title="视图数据增删改查"></a>视图数据增删改查</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看数据</span><br><span class="line">select * from 视图名;</span><br><span class="line"></span><br><span class="line">插入数据</span><br><span class="line">insert into 视图名() values();</span><br><span class="line"></span><br><span class="line">修改视图数据</span><br><span class="line">update 视图名 set 字段名=新值</span><br><span class="line"></span><br><span class="line">删除视图数据</span><br><span class="line">delete from 视图名;</span><br></pre></td></tr></table></figure>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h3><h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>作用域：针对于所有会话（连接）有效，但不能跨重启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看所有全局变量</span><br><span class="line">show global variables;</span><br><span class="line">查看满足条件的部分系统变量</span><br><span class="line">show global variables like &apos;%char%&apos;;</span><br><span class="line">查看指定的系统变量的值</span><br><span class="line">select @@global.autocommit;</span><br><span class="line">为某个系统变量赋值</span><br><span class="line">set @@global.autocommit=0;</span><br><span class="line">set global autocommit=0;</span><br></pre></td></tr></table></figure>
+<h4 id="会话变量"><a href="#会话变量" class="headerlink" title="会话变量"></a>会话变量</h4><p>作用域：针对于当前会话（连接）有效</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看所有会话变量</span><br><span class="line">show session variables;</span><br><span class="line">查看满足条件的部分会话变量</span><br><span class="line">show session variables like &apos;%char%&apos;;</span><br><span class="line">查看指定的会话变量的值</span><br><span class="line">select @@autocommit;</span><br><span class="line">select @@session.tx_isolation;</span><br><span class="line">为某个会话变量赋值</span><br><span class="line">set @@session.tx_isolation=&apos;read-uncommitted&apos;;</span><br><span class="line">set session tx_isolation=&apos;read-committed&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><h4 id="用户变量"><a href="#用户变量" class="headerlink" title="用户变量"></a>用户变量</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明并初始化</span><br><span class="line">set @变量名=值;</span><br><span class="line">set @变量名:=值;</span><br><span class="line">select @变量名:=值;</span><br><span class="line"></span><br><span class="line">赋值</span><br><span class="line">方式一：一般用于赋简单的值</span><br><span class="line">set 变量名=值;</span><br><span class="line">set 变量名:=值;</span><br><span class="line">select 变量名:=值;</span><br><span class="line">方式二：一般用于赋表 中的字段值</span><br><span class="line">select 字段名或表达式 into 变量</span><br><span class="line">from 表;</span><br><span class="line"></span><br><span class="line">使用</span><br><span class="line">select @变量名;</span><br></pre></td></tr></table></figure>
+<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明</span><br><span class="line">declare 变量名 类型 【default 值】;</span><br><span class="line"></span><br><span class="line">赋值</span><br><span class="line">方式一：一般用于赋简单的值</span><br><span class="line">set 变量名=值;</span><br><span class="line">set 变量名:=值;</span><br><span class="line">select 变量名:=值;</span><br><span class="line">方式二：一般用于赋表 中的字段值</span><br><span class="line">select 字段名或表达式 into 变量</span><br><span class="line">from 表;</span><br><span class="line"></span><br><span class="line">使用</span><br><span class="line">select 变量名;</span><br></pre></td></tr></table></figure>
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、if函数</span><br><span class="line">if(条件,值1,值2);</span><br><span class="line"></span><br><span class="line">2、case语句</span><br><span class="line">情况一：类似于switch</span><br><span class="line">case 表达式</span><br><span class="line">when 值1 then 结果1或语句1(如果是语句，需要加分号) </span><br><span class="line">when 值2 then 结果2或语句2(如果是语句，需要加分号)</span><br><span class="line">...</span><br><span class="line">else 结果n或语句n(如果是语句，需要加分号)</span><br><span class="line">end 【case】（如果是放在begin end中需要加上case，如果放在select后面不需要）</span><br><span class="line"></span><br><span class="line">情况二：类似于多重if</span><br><span class="line">case </span><br><span class="line">when 条件1 then 结果1或语句1(如果是语句，需要加分号) </span><br><span class="line">when 条件2 then 结果2或语句2(如果是语句，需要加分号)</span><br><span class="line">...</span><br><span class="line">else 结果n或语句n(如果是语句，需要加分号)</span><br><span class="line">end 【case】（如果是放在begin end中需要加上case，如果放在select后面不需要）</span><br><span class="line"></span><br><span class="line">3、if语句</span><br><span class="line">if 情况1 then 语句1;</span><br><span class="line">elseif 情况2 then 语句2;</span><br><span class="line">...</span><br><span class="line">else 语句n;</span><br><span class="line">end if;</span><br></pre></td></tr></table></figure>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while</span><br><span class="line">【标签:】while 循环条件  do</span><br><span class="line">	循环体;</span><br><span class="line">end while 【标签】;</span><br><span class="line"></span><br><span class="line">leave相当于break</span><br><span class="line">iterate相当于continue</span><br><span class="line"></span><br><span class="line">loop</span><br><span class="line">【标签:】loop</span><br><span class="line">	循环体;</span><br><span class="line">end loop 【标签】;</span><br><span class="line">可以模拟简单的死循环</span><br><span class="line"></span><br><span class="line">repeat</span><br><span class="line">【标签：】repeat</span><br><span class="line">	循环体;</span><br><span class="line">until 结束循环的条件</span><br><span class="line">end repeat 【标签】;</span><br></pre></td></tr></table></figure>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p><strong>含义：一组经过预先编译的sql语句的集合</strong></p>
+<p><strong>优点：</strong></p>
+<ol>
+<li><strong>提高了sql语句的重用性，减少了开发程序员的压力</strong></li>
+<li><strong>提高了效率</strong></li>
+<li><strong>减少了传输次数</strong></li>
+</ol>
+<h4 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、需要设置新的结束标记</span><br><span class="line">delimiter 新的结束标记;</span><br><span class="line">示例：</span><br><span class="line">delimiter $;</span><br><span class="line"></span><br><span class="line">CREATE PROCEDURE 存储过程名(IN|OUT|INOUT 参数名  参数类型,...)</span><br><span class="line">BEGIN</span><br><span class="line">	sql语句1;</span><br><span class="line">	sql语句2;</span><br><span class="line">END $</span><br><span class="line"></span><br><span class="line">2、存储过程体中可以有多条sql语句，如果仅仅一条sql语句，则可以省略begin end</span><br><span class="line"></span><br><span class="line">3、参数前面的符号的意思</span><br><span class="line">in:该参数只能作为输入 （该参数不能做返回值）</span><br><span class="line">out：该参数只能作为输出（该参数只能做返回值）</span><br><span class="line">inout：既能做输入又能做输出</span><br></pre></td></tr></table></figure>
+<h4 id="调用存储过程"><a href="#调用存储过程" class="headerlink" title="调用存储过程"></a>调用存储过程</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">call 存储过程名(实参列表);</span><br></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE FUNCTION 函数名(参数名 参数类型,...) RETURNS 返回类型</span><br><span class="line">BEGIN</span><br><span class="line">	函数体</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+<h4 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 函数名（实参列表）;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：函数与存储过程的区别：</strong></p>
+<p><strong>返回值：函数只能是一个，存储过程可以是0个或多个</strong></p>
+<p><strong>应用场景：函数一般用于查询结果为一个值并返回，存储过程一般用于更新</strong></p>
+<h3 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h3><p><strong>注意：游标只能用在存储过程和函数中</strong></p>
+<h4 id="声明游标"><a href="#声明游标" class="headerlink" title="声明游标"></a>声明游标</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">declare 游标名 cursor for 查询语句;</span><br></pre></td></tr></table></figure>
+<h4 id="打开游标"><a href="#打开游标" class="headerlink" title="打开游标"></a>打开游标</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">open 游标名;</span><br></pre></td></tr></table></figure>
+<h4 id="使用游标"><a href="#使用游标" class="headerlink" title="使用游标"></a>使用游标</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fetch 游标名 into 变量名</span><br></pre></td></tr></table></figure>
+<h4 id="关闭游标"><a href="#关闭游标" class="headerlink" title="关闭游标"></a>关闭游标</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">close 游标名</span><br></pre></td></tr></table></figure>
+<h4 id="游标示例"><a href="#游标示例" class="headerlink" title="游标示例"></a>游标示例</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">delimiter $</span><br><span class="line">create procedure processorders()</span><br><span class="line">begin</span><br><span class="line">	declare done boolean default 0;</span><br><span class="line">    declare o int;</span><br><span class="line">    declare a int;</span><br><span class="line">	declare ordernumbers cursor </span><br><span class="line">    for</span><br><span class="line">    select id from people;</span><br><span class="line">    #无返回数据时触发该语句</span><br><span class="line">    declare continue handler for sqlstate &apos;02000&apos; set done=1;</span><br><span class="line">    #第二种方式，此外continue和exit各有不同作用</span><br><span class="line">    #declare continue/exit handler for NOT FOUND set done=1;</span><br><span class="line">    </span><br><span class="line">    create table if not exists ordertotals</span><br><span class="line">    (order_num int);</span><br><span class="line">    </span><br><span class="line">    #打开游标</span><br><span class="line">    open ordernumbers;</span><br><span class="line">    </span><br><span class="line">    repeat</span><br><span class="line">    	#使用游标</span><br><span class="line">    	fetch ordernumbers into o;</span><br><span class="line">    	insert into ordertotals values(o);</span><br><span class="line">    until done end repeat;</span><br><span class="line">    #关闭游标</span><br><span class="line">    close ordernumbers;</span><br><span class="line">end $</span><br></pre></td></tr></table></figure>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p><strong>触发器是响应delete、insert、update语句时自动执行的一条或一组语句。</strong></p>
+<p><strong>注意：只有表支持触发器</strong></p>
+<h4 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set @temp=0;</span><br><span class="line">create trigger newPeople after insert on people</span><br><span class="line">for each row select &apos;People added&apos; into @temp;</span><br><span class="line"></span><br><span class="line">每个表最多支持6个触发器(每条insert、delete、update的前后)，每个表每个事件每次只允许一个触发器</span><br></pre></td></tr></table></figure>
+<h4 id="删除触发器"><a href="#删除触发器" class="headerlink" title="删除触发器"></a>删除触发器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop trigger 触发器名</span><br></pre></td></tr></table></figure>
+<h4 id="触发器示例"><a href="#触发器示例" class="headerlink" title="触发器示例"></a>触发器示例</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insert</span><br><span class="line">set @temp=0;</span><br><span class="line">create trigger newPeople after insert on people</span><br><span class="line">for each row select new.id=@temp;</span><br><span class="line">在insert触发器内可以引用一个名为new的虚拟表，访问被插入的行</span><br><span class="line">在before insert触发器中，new的值可以被更新</span><br><span class="line">对于auto_increment列，new在执行前包含0，在insert后包含新的自动生成值</span><br><span class="line"></span><br><span class="line">delete</span><br><span class="line">create trigger deletepeople before delete on people</span><br><span class="line">for each row</span><br><span class="line">begin</span><br><span class="line">	insert into archive_peoples(id,name,age) values(old.id,old.name,old.age)</span><br><span class="line">end</span><br><span class="line">在delete触发器代码内部，可以引用一个名为old的虚拟表，访问被删除的行</span><br><span class="line">old的值都是只读，不能更新</span><br><span class="line"></span><br><span class="line">update</span><br><span class="line">create trigger updatepeople before update on people</span><br><span class="line">for each row set new.name=upper(new.name)</span><br><span class="line">update触发器代码中可以引用名为old的虚拟表访问更新前的数据，引用名为new虚拟表访问更新后的数据</span><br><span class="line">在before update触发器中，new中的值可能被更新</span><br><span class="line">old的值都是只读的，不能更新</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>YearPlan</title>
+    <url>/2019/09/11/YearPlan/</url>
+    <content><![CDATA[<h1 id="新的学期，新的开始！"><a href="#新的学期，新的开始！" class="headerlink" title="新的学期，新的开始！"></a>新的学期，新的开始！</h1><p>吾早前便已有建此博客之想法，但一者事物繁杂，身陷泥淖难以自拔，二者也未知从何开始，记录什么内容。但在学习人工智能、计算机基础过程中，尤以资料搜寻最耗时耗力，因此自今日始，若偶有所得，便当记录于此，与诸君共享，增一丝趣味罢了。</p>
+<p>以下为己学习之路线规划，望己能秉持自身，勤勉苦学。</p>
+<a id="more"></a>
+<h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><ul>
+<li><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a><em>操作系统</em></h3></li>
+<li><h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a><em>计算机网络</em></h3></li>
+<li><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><em>数据库</em></h3></li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
+<li><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><em>数组</em></h3></li>
+<li><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a><em>链表</em></h3></li>
+<li><h3 id="队列与栈"><a href="#队列与栈" class="headerlink" title="队列与栈"></a><em>队列与栈</em></h3></li>
+<li><h3 id="树与堆"><a href="#树与堆" class="headerlink" title="树与堆"></a><em>树与堆</em></h3></li>
+<li><h3 id="图"><a href="#图" class="headerlink" title="图"></a><em>图</em></h3></li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li><h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><em>贪心</em></h3></li>
+<li><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a><em>递归</em></h3></li>
+<li><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><em>动态规划</em></h3></li>
+</ul>
+<h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><ul>
+<li><h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a><em>线性代数</em></h3></li>
+<li><h3 id="概率统计"><a href="#概率统计" class="headerlink" title="概率统计"></a><em>概率统计</em></h3></li>
+<li><h3 id="数学分析"><a href="#数学分析" class="headerlink" title="数学分析"></a><em>数学分析</em></h3></li>
+</ul>
+<h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><ul>
+<li><h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a><em>计算机视觉</em></h3></li>
+<li><h3 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a><em>自然语言处理</em></h3></li>
+</ul>
+<h2 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h2><h2 id="天文地理"><a href="#天文地理" class="headerlink" title="天文地理"></a>天文地理</h2><ul>
+<li><h3 id="宇宙"><a href="#宇宙" class="headerlink" title="宇宙"></a><em>宇宙</em></h3></li>
+</ul>
+<h2 id="人文历史"><a href="#人文历史" class="headerlink" title="人文历史"></a>人文历史</h2><ul>
+<li><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a><em>历史</em></h3></li>
+</ul>
+<h2 id="杂文"><a href="#杂文" class="headerlink" title="杂文"></a>杂文</h2>]]></content>
+      <categories>
+        <category>plan</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UML</title>
+    <url>/2019/10/12/UML/</url>
+    <content><![CDATA[<p>此篇博客转载：<a href="https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html</a></p>
+<p>这里只讲讲几个基本的UML元素，其目的旨在看懂类图之间的关系，明白类图之间的线条、箭头代表的含义。</p>
+<h2 id="从一个示例开始"><a href="#从一个示例开始" class="headerlink" title="从一个示例开始"></a>从一个示例开始</h2><p>请看以下这个类图，类之间的关系是我们需要关注的：</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_class_struct.jpg" alt="_images/uml_class_struct.jpg"></p>
+<a id="more"></a>
+<ul>
+<li>车的类图结构为&lt;<abstract>&gt;，表示车是一个抽象类；</abstract></li>
+<li>它有两个继承类：小汽车和自行车；它们之间的关系为实现关系，使用带空心箭头的虚线表示；</li>
+<li>小汽车为与SUV之间也是继承关系，它们之间的关系为泛化关系，使用带空心箭头的实线表示；</li>
+<li>{</li>
+<li>小汽车与发动机之间是组合关系，使用带实心箭头的实线表示；</li>
+<li>学生与班级之间是聚合关系，使用带空心箭头的实线表示；</li>
+<li>学生与身份证之间为关联关系，使用一根实线表示；</li>
+<li>学生上学需要用到自行车，与自行车是一种依赖关系，使用带箭头的虚线表示；</li>
+</ul>
+<p>下面我们将介绍这六种关系；</p>
+<hr>
+<h2 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h2><h3 id="泛化关系-generalization"><a href="#泛化关系-generalization" class="headerlink" title="泛化关系(generalization)"></a>泛化关系(generalization)</h3><p>类的继承结构表现在UML中为：泛化(generalize)与实现(realize)：</p>
+<p>继承关系为 is-a的关系；两个对象之间如果可以用 is-a 来表示，就是继承关系：</p>
+<p>例子：自行车是车、猫是动物</p>
+<p>泛化关系用一条带空心箭头的直接表示；如下图表示（A继承自B）；</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_generalization.jpg" alt="_images/uml_generalization.jpg"></p>
+<p>例子：汽车在现实中有实现，可用汽车定义具体的对象；汽车与SUV之间为泛化关系；</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_generalize.jpg" alt="_images/uml_generalize.jpg"></p>
+<p>注：最终代码中，泛化关系表现为继承非抽象类；</p>
+<h3 id="实现关系-realize"><a href="#实现关系-realize" class="headerlink" title="实现关系(realize)"></a>实现关系(realize)</h3><p>实现关系用一条带空心箭头的虚线表示；</p>
+<p>例子：”车”为一个抽象概念，在现实中并无法直接用来定义对象；只有指明具体的子类(汽车还是自行车)，才 可以用来定义对象（”车”这个类在C++中用抽象类表示，在JAVA中有接口这个概念，更容易理解）</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_realize.jpg" alt="_images/uml_realize.jpg"></p>
+<p>注：最终代码中，实现关系表现为继承抽象类；</p>
+<h3 id="聚合关系-aggregation"><a href="#聚合关系-aggregation" class="headerlink" title="聚合关系(aggregation)"></a>聚合关系(aggregation)</h3><p>聚合关系用一条带空心菱形箭头的直线表示，如下图表示A聚合到B上，或者说B由A组成；</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_aggregation.jpg" alt="_images/uml_aggregation.jpg"></p>
+<p>聚合关系用于表示实体对象之间的关系，表示整体由部分构成的语义；例如一个部门由多个员工组成；</p>
+<p>与组合关系不同的是，整体和部分不是强依赖的，即使整体不存在了，部分仍然存在；例如， 部门撤销了，人员不会消失，他们依然存在；</p>
+<h3 id="组合关系-composition"><a href="#组合关系-composition" class="headerlink" title="组合关系(composition)"></a>组合关系(composition)</h3><p>组合关系用一条带实心菱形箭头直线表示，如下图表示A组成B，或者B由A组成；</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_composition.jpg" alt="_images/uml_composition.jpg"></p>
+<p>与聚合关系一样，组合关系同样表示整体由部分构成的语义；比如公司由多个部门组成；</p>
+<p>但组合关系是一种强依赖的特殊聚合关系，如果整体不存在了，则部分也不存在了；例如， 公司不存在了，部门也将不存在了；</p>
+<h3 id="关联关系-association"><a href="#关联关系-association" class="headerlink" title="关联关系(association)"></a>关联关系(association)</h3><p>关联关系是用一条直线表示的；它描述不同类的对象之间的结构关系；它是一种静态关系， 通常与运行状态无关，一般由常识等因素决定的；它一般用来定义对象之间静态的、天然的结构； 所以，关联关系是一种“强关联”的关系；</p>
+<p>比如，乘车人和车票之间就是一种关联关系；学生和学校就是一种关联关系；</p>
+<p>关联关系默认不强调方向，表示对象间相互知道；如果特别强调方向，如下图，表示A知道B，但 B不知道A；</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_association.jpg" alt="_images/uml_association.jpg"></p>
+<p>注：在最终代码中，关联对象通常是以成员变量的形式实现的；</p>
+<h3 id="依赖关系-dependency"><a href="#依赖关系-dependency" class="headerlink" title="依赖关系(dependency)"></a>依赖关系(dependency)</h3><p>依赖关系是用一套带箭头的虚线表示的；如下图表示A依赖于B；他描述一个对象在运行期间会用到另一个对象的关系；</p>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/uml_dependency.jpg" alt="_images/uml_dependency.jpg"></p>
+<p>与关联关系不同的是，它是一种临时性的关系，通常在运行期间产生，并且随着运行时的变化； 依赖关系也可能发生变化；</p>
+<p>显然，依赖也有方向，双向依赖是一种非常糟糕的结构，我们总是应该保持单向依赖，杜绝双向依赖的产生；</p>
+<p>注：在最终代码中，依赖关系体现为类构造方法及类方法的传入参数，箭头的指向为调用关系；依赖关系除了临时知道对方外，还是“使用”对方的方法和属性；</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p>为了展示对象之间的交互细节，后续对设计模式解析的章节，都会用到时序图；</p>
+<p>时序图（Sequence Diagram）是显示对象之间交互的图，这些对象是按时间顺序排列的。时序图中显示的是参与交互的对象及其对象之间消息交互的顺序。</p>
+<p>时序图包括的建模元素主要有：对象（Actor）、生命线（Lifeline）、控制焦点（Focus of control）、消息（Message）等等。</p>
+<p>关于时序图，以下这篇文章将概念介绍的比较详细：</p>
+<p><a href="http://smartlife.blog.51cto.com/1146871/284874" target="_blank" rel="noopener">http://smartlife.blog.51cto.com/1146871/284874</a></p>
+]]></content>
+      <categories>
+        <category>UML</category>
+        <category>UML简述</category>
+      </categories>
+      <tags>
+        <tag>UML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>卷积神经网络结构-DenseNet</title>
+    <url>/2020/12/12/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-DenseNet/</url>
+    <content><![CDATA[<h1 id="DenseNet详解"><a href="#DenseNet详解" class="headerlink" title="DenseNet详解"></a>DenseNet详解</h1><p><a href="https://arxiv.org/pdf/1608.06993.pdf" target="_blank" rel="noopener">DenseNet</a>是2017年被提出的，其主要创新在于从特征重用角度设计拓扑结构。</p>
+<p>github地址为：<a href="https://github.com/liuzhuang13/DenseNet" target="_blank" rel="noopener">https://github.com/liuzhuang13/DenseNet</a></p>
+<a id="more"></a>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>DenseNet实际上是通过层间互联实现特征重用的，其基本结构Dense模块如下图所示：</p>
+<p><img src="Dense.png" alt="Dense" style="zoom:80%;"></p>
+<p>从中可以看出，模块中层与层之间互相连接，每层网络都可以将前几层的特征映射作为额外输入，然后传递给其后所有层。此种前馈传播方式可以保证，网络中所有层之间都能进行信息流动，从而最大限度地保留所需要的信息，避免了特征的冗余学习。另外，由于每层网络都与最后的分类器直接相连，因此在利用反向传播方法训练时，损失函数的梯度也可以被反馈到浅层，从而避免梯度消失，加速网络训练过程，甚至可以隐式地监督每层网络去学习更具区分性的特征。</p>
+<p>DenseNet的整体结构如下图所示，共有三种Dense模块，每个模块间存在卷积层与池化层，用以改变特征映射尺寸。  </p>
+<p><img src="DenseNet.png" alt="DenseNet"></p>
+<h2 id="网络参数"><a href="#网络参数" class="headerlink" title="网络参数"></a>网络参数</h2><p>该模型的详细参数如下所示，其中1x1卷积核的使用可以减少输入  3x3卷积核的特征映射数目，从而减少网络参数量。</p>
+<p><img src="参数表.png" alt="参数表"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>原文通过实验证明DenseNet可以持续加深到数百层而不会遇到优化困难，并且随着参数的增长其性能也不断提高。与ResNet相比，达到相同性能时所需的参数更少。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>卷积神经网络</category>
+      </categories>
+      <tags>
+        <tag>DenseNet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>卷积神经网络结构-AlexNet</title>
+    <url>/2019/11/20/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-AlexNet/</url>
+    <content><![CDATA[<h1 id="AlexNet详解"><a href="#AlexNet详解" class="headerlink" title="AlexNet详解"></a>AlexNet详解</h1><p>AlexNet网络是Hinton和他的学生Alex Krizhevsky在2012年ImageNet Challenge中使用的模型结构，其中的技术细节被整理成论文<a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">ImageNet Classification with Deep Convolutional Neural Networks</a>发表。作为深度学习历史上大获成功的经典网络，其中有很多思想值得我们借鉴学习，此篇文章将深入分析论文主要内容。</p>
+<a id="more"></a>
+<h2 id="AlexNet整体结构"><a href="#AlexNet整体结构" class="headerlink" title="AlexNet整体结构"></a>AlexNet整体结构</h2><p><img src="AlexNet.png" alt="AlexNet"></p>
+<p>网络结构如上图所示，共有5个卷积层，3个最大池化层，3个全连接层。如今去看，网络并不能算深，毕竟ResNet网络已经可以达到上百层，但是在当时，实际上用了两块GPU训练网络。接下来将详细介绍其中的具体细节。</p>
+<h3 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h3><p>卷积层输出尺寸计算：<br>$$<br>O=(I-K+2P)/S+1<br>$$<br>其中I为输入尺寸，O为输出尺寸，K为卷积核尺寸，P为填充数，S为步长。</p>
+<p>池化层输出尺寸计算：<br>$$<br>O=(I-K)/S+1<br>$$<br>其中I为输入尺寸，O为输出尺寸，K为池化尺寸，S为步长。</p>
+<p><img src="参数计算.png" alt="网络参数"></p>
+<p>网络中参数及神经元个数计算如上图所示，参数与原文中的60million相符，但是神经元个数与原文中的650000神经元个数不符，望大家指正。</p>
+<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>网络中使用的激活函数为Relu，这是一种非饱和激活函数，其公式如下：<br>$$<br>f(x)=max(0,x)<br>$$<br>在原文中，作者也给出了选择Relu的原因，主要有下面两点：</p>
+<ol>
+<li>下图是论文中的实验图，从中可以看出，相比于传统的sigmoid和tanh而言，其收敛速度更快。</li>
+</ol>
+<p><img src="Relu.png" alt="Relu"></p>
+<ol start="2">
+<li>网络与数据集都比较大，使用Relu计算量更小，计算速度更快。</li>
+</ol>
+<h3 id="局部响应归一化"><a href="#局部响应归一化" class="headerlink" title="局部响应归一化"></a>局部响应归一化</h3><p>原文中作者提到使用局部响应归一化技术(Local Response Normalization, LRN)可以提升网络泛化能力，其公式如下：<br>$$<br>b^i_{x,y}=a^i_{x,y}/(k+\alpha\sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}(a^j_{x,y})^2)^\beta<br>$$<br>其中的求和表示对相同空间位置的n个特征映射求和，N表示当层特征映射的总个数，i代表当前的特征映射。原文中通过一系列验证集实验，确定其中的超参数取值如下:<br>$$<br>k=2,n=5,\alpha=10^{-4},\beta=0.75<br>$$<br>本质上LRN层相当于对局部神经元的激活值创建竞争机制，抑制反馈小的神经元，放大反馈大的神经元。</p>
+<h3 id="重叠池化"><a href="#重叠池化" class="headerlink" title="重叠池化"></a>重叠池化</h3><p>原文中提到使用池化时，采用步长s&lt;尺寸k的手段（默认为s=2，k=3），增加了提取特征的丰富度，并通过实验证明了该方法不容易过拟合。</p>
+<h2 id="如何避免过拟合"><a href="#如何避免过拟合" class="headerlink" title="如何避免过拟合"></a>如何避免过拟合</h2><h3 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h3><p>原文中使用的数据增强方式主要有两种，一种是平移并水平反射图像，一种是PCA。</p>
+<h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><p>Dropout是一种常用的避免过拟合的方法，方法使用很简单。在训练阶段，设置一定的概率随机删除某些神经元输出；在测试阶段，则保持所有神经元的正常输出。</p>
+<p>但是目前来讲，很少将其用于卷积层中，而更多用于全连接层中。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>卷积神经网络</category>
+      </categories>
+      <tags>
+        <tag>AlexNet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>卷积神经网络结构-ResNeXt</title>
+    <url>/2020/12/12/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-ResNeXt/</url>
+    <content><![CDATA[<h1 id="ResNeXt详解"><a href="#ResNeXt详解" class="headerlink" title="ResNeXt详解"></a>ResNeXt详解</h1><p><a href="https://arxiv.org/abs/1611.05431" target="_blank" rel="noopener">ResNeXt</a>是2015年被提出的，其主要创新在于从深度、宽度之外的角度，思考神经网络结构。</p>
+<p>github地址为：<a href="https://github.com/facebookresearch/ResNeXt" target="_blank" rel="noopener">https://github.com/facebookresearch/ResNeXt</a></p>
+<a id="more"></a>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>ResNeXt实际上融合了ResNet中的恒等映射与GoogleNet中的分支合并思想，其基本结构ResX模块如下图所示：</p>
+<p><img src="ResX.png" alt="ResX"></p>
+<p>乍一看，其实就是一个加入了恒等分支的Inception模块，但是原文中强调还有另外一点不同之处。传统的Inception模块，每条分支上的子结构不同，如下图所示：</p>
+<p><img src="Inception.png" alt="Inception"></p>
+<p>因此针对特定任务设计网络结构时往往比较繁琐。而ResX模块让每个分支保持相同子结构，所需要设置的参数便只有支路数目，大大地简化了设计要求。</p>
+<p>ResNeXt的整体结构如下图所示：</p>
+<p><img src="ResNeXt.png" alt="ResNeXt"></p>
+<p>从中可以看出，共有四种ResX模块，每种模块的数目分别是3、4、6、3。</p>
+<h2 id="网络参数"><a href="#网络参数" class="headerlink" title="网络参数"></a>网络参数</h2><p>网络的整体设计遵循两个准则：</p>
+<ol>
+<li>如果不同模块的输出特征映射具有相同的尺寸，则它们具有相同的超参数，包括卷积核个数与尺寸。</li>
+<li>如果不同模块的输出特征映射通过池化后，大小为输入尺寸的一半，则它们的卷积核个数也需要增长一倍。</li>
+</ol>
+<p>整个网络的详细参数如下图所示，其中C代表支路数目。</p>
+<p><img src="参数表.png" alt="参数表"></p>
+<p>原文中还有一点值得注意，即ResX模块的拓扑结构等效性。</p>
+<p><img src="拓扑等效.png" alt="拓扑等效"></p>
+<p>上图中的a、b、c是等效的三种拓扑结构，其中a是ResX模块，b类似于Inception-ResNet，c则是组卷积。网络参数图中的模块结构便是通过c形式表达出来的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过原文的实验证明，增加分支数目C比增加深度、宽度拥有更好的性能。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>卷积神经网络</category>
+      </categories>
+      <tags>
+        <tag>ResNeXt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>卷积神经网络结构-VGG</title>
+    <url>/2020/12/12/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-VGG/</url>
+    <content><![CDATA[<h1 id="VGG详解"><a href="#VGG详解" class="headerlink" title="VGG详解"></a>VGG详解</h1><p><a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener">VGG</a>是2014年提出的，其主要创新在于全使用3x3、1x1的小卷积核，增加网络深度，提升图像分类准确度。</p>
+<a id="more"></a>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>原文中通过实验对比了六种不同的网络结构，分别如下：</p>
+<p><img src="VGG.png" alt="VGG"></p>
+<p>这六种网络结构相似，但是具体的卷积层数目不同，其中网络D是VGG-16，网络E是VGG-19。</p>
+<p>VGG-16的具体网络结构如下图所示：</p>
+<p><img src="VGG16.png" alt="VGG-16"></p>
+<h2 id="网络优势"><a href="#网络优势" class="headerlink" title="网络优势"></a>网络优势</h2><p>整个网络都只使用了1x1、3x3的卷积核，结构更加简洁。</p>
+<p>原文中也提到了使用3x3卷积的原因，主要有以下三点：</p>
+<ol>
+<li>从感受野的角度看，两个3x3的卷积核等于5x5，同理三个3x3等于7x7</li>
+<li>使用三个3x3的卷积核，相比于一个7x7的卷积核而言，可以使用三个非线性激活层，决策函数有更强的区分能力</li>
+<li>更少的参数</li>
+</ol>
+<p>而使用1x1的好处主要在于变化通道数目，增强非线性能力。</p>
+<h2 id="其它技术"><a href="#其它技术" class="headerlink" title="其它技术"></a>其它技术</h2><p>原文在实验部分，为了能让网络处理任意尺寸的图像，使用卷积代替全连接，具体使用如下图所示：</p>
+<p><img src="全卷积.png" alt="全卷积"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从原文的实验结果看，可以总结出以下两点：</p>
+<ol>
+<li>在网络搭建时，可以用多个小卷积代替大卷积</li>
+<li>随着网络深度的增加，性能能够得到有效提升</li>
+</ol>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>卷积神经网络</category>
+      </categories>
+      <tags>
+        <tag>VGG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>卷积神经网络结构-SqueezeNet</title>
+    <url>/2019/11/20/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-SqueezeNet/</url>
+    <content><![CDATA[<h1 id="SqueezeNet详解"><a href="#SqueezeNet详解" class="headerlink" title="SqueezeNet详解"></a>SqueezeNet详解</h1><p>SqueezeNet是2016年发表在ICLR上的文章，其主要创新在于仅使用AlexNet网络1/50的参数，却能够实现同等水平的准确率。此篇文章仅对论文<a href="https://arxiv.org/abs/1602.07360" target="_blank" rel="noopener">SQUEEZENET: ALEXNET-LEVEL ACCURACY WITH 50X FEWER PARAMETERS AND &lt;0.5MB MODEL SIZE</a>中的网络结构进行分析，其中的参数实验不在此赘述，如若感兴趣可以看看原文。</p>
+<a id="more"></a>
+<h2 id="网络优势"><a href="#网络优势" class="headerlink" title="网络优势"></a>网络优势</h2><p>SqueezeNet作为轻量级CNN模型之一，其主要有以下优势：</p>
+<ol>
+<li>更有效的分布式训练</li>
+<li>导入模型到客户端只需更小的通信代价</li>
+<li>适用于FPGA和嵌入式设备</li>
+</ol>
+<h2 id="网络设计策略"><a href="#网络设计策略" class="headerlink" title="网络设计策略"></a>网络设计策略</h2><p>原文中提到三点主要策略：</p>
+<ol>
+<li>使用1x1的卷积核代替3x3的卷积核</li>
+<li>减少3x3卷积核的输入通道数目</li>
+<li>网络中的下采样设置，让更多层有较大的激活映射(activation maps)</li>
+</ol>
+<p>此外，还有其他技术：</p>
+<ol>
+<li>1x1和3x3的卷积核都要保持输出与输出尺寸的相等，对于3x3的卷积核，设置padding=1</li>
+<li>Relu激活函数</li>
+<li>Dropout技术</li>
+<li>用GAP代替全连接层训练时</li>
+<li>线性减少学习率</li>
+</ol>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><h3 id="基础模块"><a href="#基础模块" class="headerlink" title="基础模块"></a>基础模块</h3><p>原文中提出一种名为fire的模块，其结构如下图所示：</p>
+<p><img src="Fire.png" alt="Fire"></p>
+<p>主要分成两个部分，一部分是squeeze子模块，由1x1的卷积核组成；一部分是expand子模块，由1x1和3x3的卷积核组成。</p>
+<h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><p>SqueezeNet网络的整体结构如下图所示</p>
+<p><img src="SqueezeNet.png" alt="SqueezeNet"></p>
+<p>图左是原始SqueezeNet网络，图中是加入简单跳跃连接的网络，图右是加入复杂跳跃连接的网络</p>
+<p>原文中分别对此三者的模型大小与准确度做了对比实验，结果证明加入简单跳跃连接的网络更好。</p>
+<h2 id="网络参数"><a href="#网络参数" class="headerlink" title="网络参数"></a>网络参数</h2><p>原文中直接展示了网络参数，如下图所示：</p>
+<p><img src="网络参数.png" alt="网络参数"></p>
+<p>从中可以看出，相对于AlexNet而言，大大降低了网络参数。如果使用模型压缩方法(也是此论文作者提出的)，参数则要再减少2/3的参数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从减少参数的角度来看，AlexNet网络的主要参数集中在全连接层，几乎占据了总参数的94%左右，因此在SqueezeNet中去除了全连接层，自然减少了参数。但是文中针对网络结构设计，做了大量的实验，这一点还是比较有意义的。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>卷积神经网络</category>
+      </categories>
+      <tags>
+        <tag>SqueezeNet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>量子力学</title>
+    <url>/2019/09/25/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/</url>
+    <content><![CDATA[<h1 id="量子力学简史"><a href="#量子力学简史" class="headerlink" title="量子力学简史"></a>量子力学简史</h1><p>此篇文档由《上帝掷骰子吗》粗略整理而成，如有不当之处，还望不吝指教，自不胜感激！</p>
+<h2 id="光学发展"><a href="#光学发展" class="headerlink" title="光学发展"></a>光学发展</h2><p>量子力学的诞生与光学研究有着紧密的联系，甚至可以说对光的研究直接催生出了量子力学。这部分历史大致可以分为三个阶段：</p>
+<ul>
+<li><p>第一次波粒大战</p>
+<p>波动学说代表人物：<strong>胡克，惠更斯</strong></p>
+<p>微粒学说代表人物：<strong>牛顿（色散实验）</strong></p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>第二次波粒大战</p>
+<p>波动学说代表人物：<strong>托马斯杨（双缝干涉）</strong>，<strong>菲涅尔（衍射）</strong>，<strong>麦克斯韦（电磁理论）</strong></p>
+<p>微粒学说代表人物：<strong>马吕斯</strong>（<strong>偏振现象</strong>，而波动学说假设光是一种横波，解决此问题）</p>
+</li>
+<li><p>第三次波粒大战</p>
+<p>波动学说代表人物：<strong>德布罗意（相波）</strong></p>
+<p>微粒学说代表人物：<strong>爱因斯坦</strong>（<strong>光电效应</strong>，提出光量子），<strong>康普顿（康普顿效应）</strong></p>
+</li>
+</ul>
+<p>而爱因斯坦的光量子假说，实质上是引入了普朗克量子假设的结果，而量子力学的诞生也正是由普朗克拉开了序幕。</p>
+<h2 id="量子力学发展"><a href="#量子力学发展" class="headerlink" title="量子力学发展"></a>量子力学发展</h2><p>量子力学发展也可以分为三个阶段：</p>
+<ul>
+<li><p>量子初现</p>
+<p>普朗克研究维恩定律与瑞利-金斯定律的基础上，假设能量是不连续的，创造性地提出了量子的概念，并通过普朗克方程描述了单个量子的能量。<br>$$<br>E = hv<br>$$</p>
+</li>
+<li><p>量子巩固</p>
+<p>这是量子力学发展的黄金时期，涌现出了相当多的优秀年轻科学家。</p>
+<p><strong>卢瑟福</strong>：于1911年提出<strong>原子模型</strong>，原子由原子核和电子组成。但是这种模型在经典电磁学理论中，由于不断释放辐射能量，最终将会崩塌。</p>
+<p><strong>玻尔</strong>：于1913年，完成原子模型三论文，并在之后提出<strong>量子模型</strong>。在此模型中，能量与电子运动方向均不连续；为了解决波粒问题，提出<strong>互补原理</strong>，即电子是波还是粒子，取决于我们观测的方式。</p>
+<p><strong>德布罗意</strong>：于1923年提出<strong>相波</strong>的概念，发现电子以速度v运动时，伴随着速度为c^2/v的波。<br>$$<br>\lambda = (c^2/v_1)/(mc^2/h)=h/mv_0<br>$$<br><strong>海森堡</strong>：于1925年提出<strong>矩阵力学</strong>（值得一提的是，海森堡本人重新发明了矩阵）；1927年提出<strong>测不确定性</strong>，永远不可能同时观测到一个电子的动量及位置。</p>
+<p><strong>薛定谔</strong>：于1926年提出<strong>波动方程</strong>，事实证明其与海森堡的矩阵力学实质上是同一体系，波恩认为其中的波函数是一种概率分布。</p>
+<p><strong>狄拉克</strong>：于1928年将相对论引入量子力学，提出<strong>狄拉克方程</strong>。</p>
+</li>
+<li><p>新的征途</p>
+<p>对于量子力学背后的解释，除了哥本哈根解释外，还有很多其他观点，下述只列举部分较为著名的解释观点。</p>
+<p>冯诺依曼：无限复归链</p>
+<p>维格纳：意识论</p>
+<p>埃弗莱特：多世界理论</p>
+<p>盖尔曼：退相干理论</p>
+<p>玻姆：隐变量</p>
+<p>贝尔：贝尔不等式</p>
+</li>
+</ul>
+<p>量子力学仍然在发展，相信终有一天，我们能够真正抓住这个幽灵的秘密！</p>
+<p><img src="量子力学.gif" alt></p>
+]]></content>
+      <categories>
+        <category>physical</category>
+      </categories>
+      <tags>
+        <tag>历史</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java单例模式</title>
+    <url>/2019/10/13/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="创建型模式之单例模式"><a href="#创建型模式之单例模式" class="headerlink" title="创建型模式之单例模式"></a>创建型模式之单例模式</h1><p>此篇博客主要谈谈创建型模式中的单例模式，包括单例模式的五种实现方式：饿汉式、懒汉式、双重检测锁、静态内部类以及枚举。</p>
+<p>此篇博客主要参考以下文档：</p>
+<p><a href="https://design-patterns.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/</a></p>
+<h2 id="模式动机"><a href="#模式动机" class="headerlink" title="模式动机"></a>模式动机</h2><p>对于系统中的某些类来说，只有一个实例很重要，例如，一个系统中可以存在多个打印任务，但是只能有一个正在工作的任务；一个系统只能有一个窗口管理器或文件系统；一个系统只能有一个计时工具或ID（序号）生成器。</p>
+<p>如何保证一个类只有一个实例并且这个实例易于被访问呢？定义一个全局变量可以确保对象随时都可以被访问，但不能防止我们实例化多个对象。</p>
+<p>一个更好的解决办法是让类自身负责保存它的唯一实例。这个类可以保证没有其他实例被创建，并且它可以提供一个访问该实例的方法。这就是单例模式的模式动机。</p>
+<a id="more"></a>
+<h2 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h2><p>单例模式(Singleton Pattern)：单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。</p>
+<p>单例模式的要点有三个：一是某个类只能有一个实例；二是它必须自行创建这个实例；三是它必须自行向整个系统提供这个实例。单例模式是一种对象创建型模式。单例模式又名单件模式或单态模式。</p>
+<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><p>单例模式包含如下角色：</p>
+<ul>
+<li>Singleton：单例</li>
+</ul>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/Singleton.jpg" alt="../_images/Singleton.jpg"></p>
+<p>上图中实现了懒汉式单例模式，可以延时加载，一定程度上减少了资源的开销。</p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungerSingleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> HungerSingleton instance = <span class="keyword">new</span> HungerSingleton();</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">HungerSingleton</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> HungerSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>饿汉式单例模式在类加载时便创建了实例对象，客户端调用实例创建方法时直接返回实例即可，该方式是线程安全的。</p>
+<h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> LazySingleton instance;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">			instance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与饿汉式单例模式不同，懒汉式单例模式直到客户端真正调用实例创建方法时才创建实例，起到了延时加载的作用。</p>
+<p>为了保证线程安全，可以用synchronized修饰方法，另外还能用双重检测锁的方式保证线程安全。</p>
+<h3 id="双重检测锁"><a href="#双重检测锁" class="headerlink" title="双重检测锁"></a>双重检测锁</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DoubleCheckSingleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> DoubleCheckSingleton instance;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">DoubleCheckSingleton</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DoubleCheckSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">synchronized</span> (DoubleCheckSingleton.class) &#123;</span><br><span class="line">				<span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">					instance = <span class="keyword">new</span> DoubleCheckSingleton();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得一提的是，此处采用两次判断instance是否为null的原因，假设多个线程同时通过第一个条件，此时由于synchronized锁，只能有一个线程可以执行后面实例的创建过程，若是没有第二个instance的判断，则在第一个线程创建实例对象后，后续线程将会再次创建对象，因此此时还需要判断instance是否已经被创建。</p>
+<h3 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticSingleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> StaticSingleton instance = <span class="keyword">new</span> StaticSingleton();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">StaticSingleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> StaticSingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Singleton.instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要提一下为什么静态内部类是线程安全的，其原因在于：</p>
+<ol>
+<li>只有在访问静态内部类的静态变量方法时，静态内部类才开始加载。</li>
+<li>虚拟机会保证一个类的构造器<clinit>()方法在多线程环境下被正确地加载，同步，如果多个线程同时初始化一个类，只有一个线程会执行这个类的构造器<clinit>()方法，其他线程都需要阻塞等待，直到活动线程执行<clinit>()方法完毕。如果在一个类的<clinit>()方法中有耗时很长的操作，就可能造成多个进程阻塞(需要注意的是，其他线程虽然会被阻塞，但如果执行<clinit>()方法后，其他线程唤醒之后不会再次进入<clinit>()方法。同一个加载器下，一个类型只会初始化一次。)</clinit></clinit></clinit></clinit></clinit></clinit></li>
+</ol>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> EnumSingleton &#123;</span><br><span class="line">	INSTANCE;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//自定义方法</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相比于其他方式来说，枚举式单例模式更加简洁。</p>
+<h3 id="方法对比"><a href="#方法对比" class="headerlink" title="方法对比"></a>方法对比</h3><ul>
+<li>饿汉式（线程安全，调用效率高，不能够延时加载）</li>
+<li>懒汉式（线程安全，调用效率不高，可以延时加载）</li>
+<li>双重检测锁（由于JVM底层原因，偶尔会出问题）</li>
+<li>静态内部类（线程安全，调用效率高，可以延时加载）</li>
+<li>枚举（线程安全，调用效率高，不能延时加载，天然地防止反射和反序列化）</li>
+</ul>
+<p>单例对象占用资源小，不需要延时加载：枚举好于饿汉单例。</p>
+<p>对象占用资源大，需要延时加载：静态内部类好于懒汉。</p>
+<h2 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h2><p>单例模式的目的是保证一个类仅有一个实例，并提供一个访问它的全局访问点。单例模式包含的角色只有一个，就是单例类——Singleton。单例类拥有一个私有构造函数，确保用户无法通过new关键字直接实例化它。除此之外，该模式中包含一个静态私有成员变量与静态公有的工厂方法，该工厂方法负责检验实例的存在性并实例化自己，然后存储在静态成员变量中，以确保只有一个实例被创建。</p>
+<p>在单例模式的实现过程中，需要注意如下三点：</p>
+<ul>
+<li>单例类的构造函数为私有；</li>
+<li>提供一个自身的静态私有成员变量；</li>
+<li>提供一个公有的静态工厂方法。</li>
+</ul>
+<h2 id="模式优点"><a href="#模式优点" class="headerlink" title="模式优点"></a>模式优点</h2><ul>
+<li>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。</li>
+<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能。</li>
+<li>允许可变数目的实例。我们可以基于单例模式进行扩展，使用与单例控制相似的方法来获得指定个数的对象实例。</li>
+</ul>
+<h2 id="模式缺点"><a href="#模式缺点" class="headerlink" title="模式缺点"></a>模式缺点</h2><ul>
+<li>由于单例模式中没有抽象层，因此单例类的扩展有很大的困难。</li>
+<li>单例类的职责过重，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。</li>
+<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致对象状态的丢失。</li>
+</ul>
+<h2 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h2><p>在以下情况下可以使用单例模式：</p>
+<ul>
+<li>系统只需要一个实例对象，如系统要求提供一个唯一的序列号生成器，或者需要考虑资源消耗太大而只允许创建一个对象。</li>
+<li>客户调用类的单个实例只允许使用一个公共访问点，除了该公共访问点，不能通过其他途径访问该实例。</li>
+<li>在一个系统中要求一个类只有一个实例时才应当使用单例模式。反过来，如果一个类可以有几个实例共存，就需要对单例模式进行改进，使之成为多例模式</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式的要点有三个：一是某个类只能有一个实例；二是它必须自行创建这个实例；三是它必须自行向整个系统提供这个实例。单例模式是一种对象创建型模式。</li>
+<li>单例模式只包含一个单例角色：在单例类的内部实现只生成一个实例，同时它提供一个静态的工厂方法，让客户可以使用它的唯一实例；为了防止在外部对其实例化，将其构造函数设计为私有。</li>
+<li>单例模式的目的是保证一个类仅有一个实例，并提供一个访问它的全局访问点。单例类拥有一个私有构造函数，确保用户无法通过new关键字直接实例化它。除此之外，该模式中包含一个静态私有成员变量与静态公有的工厂方法。该工厂方法负责检验实例的存在性并实例化自己，然后存储在静态成员变量中，以确保只有一个实例被创建。</li>
+<li>单例模式的主要优点在于提供了对唯一实例的受控访问并可以节约系统资源；其主要缺点在于因为缺少抽象层而难以扩展，且单例类职责过重。</li>
+<li>单例模式适用情况包括：系统只需要一个实例对象；客户调用类的单个实例只允许使用一个公共访问点。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>创建型模式</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java原型与建造者模式</title>
+    <url>/2019/11/10/Java%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>此篇博客主要谈谈创建型模式中剩余的两种模式：建造者模式以及原型模式。在实际工程中，此两种模式不如工厂、单例模式常见，便不花费篇幅进行一一详述。</p>
+<p>此篇博客主要参考以下文档：</p>
+<p><a href="https://design-patterns.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/</a></p>
+<h1 id="创建型模式之建造者模式"><a href="#创建型模式之建造者模式" class="headerlink" title="创建型模式之建造者模式"></a>创建型模式之建造者模式</h1><h2 id="模式动机"><a href="#模式动机" class="headerlink" title="模式动机"></a>模式动机</h2><p>无论是在现实世界中还是在软件系统中，都存在一些复杂的对象，它们拥有多个组成部分，如汽车，它包括车轮、方向盘、发送机等各种部件。而对于大多数用户而言，无须知道这些部件的装配细节，也几乎不会使用单独某个部件，而是使用一辆完整的汽车，可以通过建造者模式对其进行设计与描述，建造者模式可以将部件和其组装过程分开，一步一步创建一个复杂的对象。用户只需要指定复杂对象的类型就可以得到该对象，而无须知道其内部的具体构造细节。</p>
+<a id="more"></a>
+<p>在软件开发中，也存在大量类似汽车一样的复杂对象，它们拥有一系列成员属性，这些成员属性中有些是引用类型的成员对象。而且在这些复杂对象中，还可能存在一些限制条件，如某些属性没有赋值则复杂对象不能作为一个完整的产品使用；有些属性的赋值必须按照某个顺序，一个属性没有赋值之前，另一个属性可能无法赋值等。</p>
+<p>复杂对象相当于一辆有待建造的汽车，而对象的属性相当于汽车的部件，建造产品的过程就相当于组合部件的过程。由于组合部件的过程很复杂，因此，这些部件的组合过程往往被“外部化”到一个称作建造者的对象里，建造者返还给客户端的是一个已经建造完毕的完整产品对象，而用户无须关心该对象所包含的属性以及它们的组装方式，这就是建造者模式的模式动机。</p>
+<h2 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h2><p>造者模式(Builder Pattern)：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<p>建造者模式是一步一步创建一个复杂的对象，它允许用户只通过指定复杂对象的类型和内容就可以构建它们，用户不需要知道内部的具体构建细节。建造者模式属于对象创建型模式。根据中文翻译的不同，建造者模式又可以称为生成器模式。</p>
+<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><p>建造者模式包含如下角色：</p>
+<ul>
+<li>Builder：抽象建造者</li>
+<li>ConcreteBuilder：具体建造者</li>
+<li>Director：指挥者</li>
+<li>Product：产品角色</li>
+</ul>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/Builder.jpg" alt="../_images/Builder.jpg"></p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>考虑这样一个场境，我们去肯德基准备点餐Meal，一份套餐由食物Food和饮料Drink构成，此时准备套餐的过程就是Food和Drink的组合过程，最终的UML类图如下：</p>
+<p><img src="Builder.png" alt="Builder"></p>
+<p>套餐Meal类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Meal</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String food;</span><br><span class="line">	<span class="keyword">private</span> String drink;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> food;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFood</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.food = food;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> drink;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDrink</span><span class="params">(String drink)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.drink = drink;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MealBuilder接口及其具体实现类A、B：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MealBuilder</span> </span>&#123;</span><br><span class="line">	<span class="function">String <span class="title">getFood</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">String <span class="title">getDrink</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MealBuilderA</span> <span class="keyword">implements</span> <span class="title">MealBuilder</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MealBuilderA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"香辣鸡腿堡"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"可口可乐"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MealBuilderB</span> <span class="keyword">implements</span> <span class="title">MealBuilder</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"香辣鸡翅"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"芬达"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MealDirector接口及其具体实现类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MealDirector</span> </span>&#123;</span><br><span class="line">	<span class="function">Meal <span class="title">getMeal</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KFCDirector</span> <span class="keyword">implements</span> <span class="title">MealDirector</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> MealBuilder builder;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">KFCDirector</span><span class="params">(MealBuilder builder)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">		<span class="keyword">this</span>.builder = builder;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Meal <span class="title">getMeal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		Meal meal = <span class="keyword">new</span> Meal();</span><br><span class="line">		meal.setDrink(builder.getDrink()); <span class="comment">//通过builder建造实际的饮料</span></span><br><span class="line">		meal.setFood(builder.getFood()); <span class="comment">//通过builder建造实际的食物</span></span><br><span class="line">		<span class="keyword">return</span> meal;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		MealBuilder builder = <span class="keyword">new</span> MealBuilderB();</span><br><span class="line">		MealDirector director = <span class="keyword">new</span> KFCDirector(builder);</span><br><span class="line">		Meal meal = director.getMeal();</span><br><span class="line">		System.out.println(meal.getDrink());</span><br><span class="line">		System.out.println(meal.getFood());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模式优点"><a href="#模式优点" class="headerlink" title="模式优点"></a>模式优点</h2><ul>
+<li>在建造者模式中， <strong>客户端不必知道产品内部组成的细节，将产品本身与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品对象。</strong></li>
+<li>每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者， <strong>用户使用不同的具体建造者即可得到不同的产品对象</strong> 。</li>
+<li><strong>可以更加精细地控制产品的创建过程</strong> 。将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰，也更方便使用程序来控制创建过程。</li>
+<li><strong>增加新的具体建造者无须修改原有类库的代码，指挥者类针对抽象建造者类编程，系统扩展方便，符合“开闭原则”。</strong></li>
+</ul>
+<h2 id="模式缺点"><a href="#模式缺点" class="headerlink" title="模式缺点"></a>模式缺点</h2><ul>
+<li>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似，如果产品之间的差异性很大，则不适合使用建造者模式，因此其使用范围受到一定的限制。</li>
+<li>如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大。</li>
+</ul>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><p>在以下情况中可以使用建造者模式：</p>
+<ul>
+<li>需要生成的产品对象有复杂的内部结构，这些产品对象通常包含多个成员属性。</li>
+<li>需要生成的产品对象的属性相互依赖，需要指定其生成顺序。</li>
+<li>对象的创建过程独立于创建该对象的类。在建造者模式中引入了指挥者类，将创建过程封装在指挥者类中，而不在建造者类中。</li>
+<li>隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>建造者模式将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一步一步创建一个复杂的对象，它允许用户只通过指定复杂对象的类型和内容就可以构建它们，用户不需要知道内部的具体构建细节。建造者模式属于对象创建型模式。</li>
+<li>建造者模式包含如下四个角色：抽象建造者为创建一个产品对象的各个部件指定抽象接口；具体建造者实现了抽象建造者接口，实现各个部件的构造和装配方法，定义并明确它所创建的复杂对象，也可以提供一个方法返回创建好的复杂产品对象；产品角色是被构建的复杂对象，包含多个组成部件；指挥者负责安排复杂对象的建造次序，指挥者与抽象建造者之间存在关联关系，可以在其construct()建造方法中调用建造者对象的部件构造与装配方法，完成复杂对象的建造</li>
+<li>在建造者模式的结构中引入了一个指挥者类，该类的作用主要有两个：一方面它隔离了客户与生产过程；另一方面它负责控制产品的生成过程。指挥者针对抽象建造者编程，客户端只需要知道具体建造者的类型，即可通过指挥者类调用建造者的相关方法，返回一个完整的产品对象。</li>
+<li>建造者模式的主要优点在于客户端不必知道产品内部组成的细节，将产品本身与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品对象，每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者，符合“开闭原则”，还可以更加精细地控制产品的创建过程；其主要缺点在于由于建造者模式所创建的产品一般具有较多的共同点，其组成部分相似，因此其使用范围受到一定的限制，如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大。</li>
+<li>建造者模式适用情况包括：需要生成的产品对象有复杂的内部结构，这些产品对象通常包含多个成员属性；需要生成的产品对象的属性相互依赖，需要指定其生成顺序；对象的创建过程独立于创建该对象的类；隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同类型的产品。</li>
+</ul>
+<h1 id="创建者模式之原型模式"><a href="#创建者模式之原型模式" class="headerlink" title="创建者模式之原型模式"></a>创建者模式之原型模式</h1><h2 id="模式动机-1"><a href="#模式动机-1" class="headerlink" title="模式动机"></a>模式动机</h2><p>在Java中，当我们需要大量的对象时，相比较于使用关键字new新建一个对象，直接在内存中拷贝该对象效率更高。因为在使用new的时候，JVM要走一趟类加载流程，这个流程非常麻烦，在类加载流程中会调用构造函数，最后生成的对象会放到堆中，而拷贝就是直接拷贝堆中的现成的二进制对象，然后重新一个分配内存块。而这种拷贝创建对象的方式可以被称为原型模式。</p>
+<h2 id="模式定义-1"><a href="#模式定义-1" class="headerlink" title="模式定义"></a>模式定义</h2><p>造者模式(Builder Pattern)：用于创建重复的对象，同时又能保证性能。</p>
+<h2 id="代码分析-1"><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h2><p>原型模式简单来说，就是对一个对象的拷贝复制，在Java中继承Cloneable类，实现其Clone方法即可。</p>
+<p>考虑我们需要大量属性相似的羊，便可以采用这种模式，最终的UML类图如下所示：</p>
+<p><img src="Prototype.png" alt="Prototype"></p>
+<p>Sheep接口及其实现类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sheep</span> <span class="keyword">extends</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">	<span class="function">Sheep <span class="title">creatClone</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SheepA</span> <span class="keyword">implements</span> <span class="title">Sheep</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SheepA</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Sheep <span class="title">creatClone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		Sheep sheep = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			sheep = (Sheep) <span class="keyword">this</span>.clone();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sheep;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Client类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Sheep sheep = <span class="keyword">new</span> SheepA(<span class="string">"小绵羊"</span>);</span><br><span class="line">		Sheep sheep2 = sheep.creatClone();</span><br><span class="line">		System.out.println(sheep);</span><br><span class="line">		System.out.println(sheep2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中只实现了浅复制，如果需要实现深复制，将属性再clone即可，不在此处赘述。</p>
+<h2 id="模式优点-1"><a href="#模式优点-1" class="headerlink" title="模式优点"></a>模式优点</h2><ul>
+<li><strong>提高新实例的创建效率</strong></li>
+<li><strong>简化创建结构</strong></li>
+</ul>
+<h2 id="模式缺点-1"><a href="#模式缺点-1" class="headerlink" title="模式缺点"></a>模式缺点</h2><ul>
+<li>需要为每一个类配备一个克隆方法，而且这个克隆方法需要对类的功能进行通盘考虑，这对全新的类来说不是很难，但对已有的类进行改造时，不一定是件容易的事，必须修改其源代码，违背了“开闭原则”。</li>
+</ul>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>如果每次创建一个对象需要花费大量时间，则原型模式是一种很好的解决方案，可以提高创建效率，但是配备克隆方法往往需要对类的功能进行通盘考虑，这对于已有的类而言并不容易。</p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>创建型模式</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能简史总结</title>
+    <url>/2020/12/12/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%AE%80%E5%8F%B2%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="人工智能简史-总结"><a href="#人工智能简史-总结" class="headerlink" title="人工智能简史-总结"></a>人工智能简史-总结</h1><p>寒假期间读完尼克先生的《人工智能简史》，在此对人工智能的发展历史做一个简要的梳理，当然其中可能有不少的缺漏，希望之后能够不断增添纠正。</p>
+<p><strong>注意：本次仅对部分内容梳理，其它部分暂时未涉及到。起源、神经网络简史、自然语言处理、遗传算法到强化学习、哲学家和人工智能、计算理论基础以及图灵与冯诺依曼的简介。</strong></p>
+<h2 id="起始-达特茅斯会议"><a href="#起始-达特茅斯会议" class="headerlink" title="起始-达特茅斯会议"></a>起始-达特茅斯会议</h2><p>人工智能的起源公认为1956年的达特茅斯会议，下面将从会议起源、参会人员、会议内容、会议成果等方面介绍。</p>
+<h3 id="会议起源"><a href="#会议起源" class="headerlink" title="会议起源"></a>会议起源</h3><p>1955年麦卡锡去IBM工作，与罗切斯特决定在1956年夏天开展一次名为“人工智能夏季研讨会”的活动，于是说服香农与明斯基给洛克菲勒基金会写了项目建议书，这也是达特茅斯会议的来源。</p>
+<h3 id="参会人员"><a href="#参会人员" class="headerlink" title="参会人员"></a>参会人员</h3><p>参会的主要人员共10人，包括<a href="https://baike.baidu.com/item/%E7%BA%A6%E7%BF%B0%C2%B7%E9%BA%A6%E5%8D%A1%E9%94%A1/858197?fr=aladdin" target="_blank" rel="noopener">麦卡锡</a>、<a href="https://baike.baidu.com/item/%E9%A9%AC%E6%96%87%C2%B7%E6%98%8E%E6%96%AF%E5%9F%BA/7398340?fr=aladdin" target="_blank" rel="noopener">明斯基</a>、塞弗里奇、<a href="https://baike.baidu.com/item/%E8%89%BE%E4%BC%A6%C2%B7%E7%BA%BD%E5%8E%84%E5%B0%94/9812800?fr=aladdin" target="_blank" rel="noopener">纽厄尔</a>、<a href="https://baike.baidu.com/item/%E5%8F%B8%E9%A9%AC%E8%B4%BA/11056006?fr=aladdin" target="_blank" rel="noopener">司马贺</a>、<a href="https://baike.baidu.com/item/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E8%89%BE%E5%B0%94%E4%BC%8D%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C/10588593?fromtitle=%E9%A6%99%E5%86%9C&amp;fromid=1146248&amp;fr=aladdin" target="_blank" rel="noopener">香农</a>、塞缪尔、伯恩斯坦、摩尔、所罗门诺夫。</p>
+<p>约翰麦卡锡是Lisp语言的发明者，1962年建立了斯坦福人工智能实验室，1971年获得图灵奖。</p>
+<p>马文明斯基是人工智能框架理论的创立者，创立了世界上第一个人工智能实验室：麻省理工人工智能实验室，1969年获图灵奖。</p>
+<p>塞弗里奇是模式识别的奠基人，完成了第一个可工作的AI程序，是维纳的学生，但是没有读完博士。</p>
+<p>纽厄尔是信息处理语言发明者之一，与司马贺共同开发了逻辑理论家，1975年获得图灵奖。</p>
+<p>司马贺是纽厄尔的老师，1975年与纽厄尔共享了图灵奖，三年后又获得了诺贝尔经济学奖，他们和阿兰珀里思一起创建了卡内基梅隆的计算机系。</p>
+<p> 香农自然不必多说了，作为信息论的创始人早已是人尽皆知。而其余四人中，塞缪尔主要研究跳棋，伯恩斯坦主要研究象棋，摩尔主要混迹于工业界，而所罗门诺夫主要研究归纳推理。</p>
+<h3 id="会议内容"><a href="#会议内容" class="headerlink" title="会议内容"></a>会议内容</h3><p>在项目建议书中，罗列了7个研究领域：</p>
+<ol>
+<li>可编程计算机</li>
+<li>编程语言</li>
+<li>神经网络</li>
+<li>计算规模的理论</li>
+<li>自我改进</li>
+<li>抽象</li>
+<li>随机性和创见性</li>
+</ol>
+<h3 id="会议成果"><a href="#会议成果" class="headerlink" title="会议成果"></a>会议成果</h3><p>纽厄尔和司马贺在会议上公布了“<a href="https://www.jiqizhixin.com/graph/technologies/597094cc-d100-4834-98c3-00e905d3f79c" target="_blank" rel="noopener">逻辑理论家</a>”的程序，可证明《数学原理》中命题逻辑部分的一个很大子集。</p>
+<p>但1958年的<a href="https://baike.baidu.com/item/%E7%8E%8B%E6%B5%A9/22564?fr=aladdin" target="_blank" rel="noopener">王浩</a>在一台IBM-704机上，仅用9分钟就证明了《数学原理》中一阶逻辑的一个子集。</p>
+<h3 id="会议意义"><a href="#会议意义" class="headerlink" title="会议意义"></a>会议意义</h3><p>实质上该会议上并没有发生划时代意义的事件，其后不久的麻省理工学院信息论年会反而显得更重要。在该次会议上心理学家<a href="https://baike.baidu.com/item/%E4%B9%94%E6%B2%BB%C2%B7%E7%B1%B3%E5%8B%92/2046761?fr=aladdin" target="_blank" rel="noopener">米勒</a>发表了“<a href="https://ieeexplore.ieee.org/document/1056815" target="_blank" rel="noopener">人类记忆和对信息的储存</a>”，<a href="https://baike.baidu.com/item/%E8%AF%BA%E5%A7%86%C2%B7%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA/5106961?fromtitle=%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA&amp;fromid=1219536&amp;fr=aladdin" target="_blank" rel="noopener">乔姆斯基</a>发表了”<a href="https://ieeexplore.ieee.org/document/1056813" target="_blank" rel="noopener">语言描述的三种模型</a>“。</p>
+<h2 id="人工智能的批判"><a href="#人工智能的批判" class="headerlink" title="人工智能的批判"></a>人工智能的批判</h2><p>1965年，德雷弗斯发表了“炼金术与人工智能”一文，其后又演变成了《计算机不能干什么》一书，目前该书已经有第三版《计算机仍然不能干什么》。</p>
+<h2 id="神经网络简史"><a href="#神经网络简史" class="headerlink" title="神经网络简史"></a>神经网络简史</h2><h3 id="初创"><a href="#初创" class="headerlink" title="初创"></a>初创</h3><p>神经网络方面的第一篇<a href="https://www.aemea.org/math/McCulloch_Pitts_1943.pdf" target="_blank" rel="noopener">文章</a>发表于1943年，其作者为麦卡洛克和皮茨。其后二人去麻省理工学院与<a href="https://baike.baidu.com/item/%E8%AF%BA%E4%BC%AF%E7%89%B9%C2%B7%E7%BB%B4%E7%BA%B3/9472405?fromtitle=%E7%BB%B4%E7%BA%B3&amp;fromid=489424&amp;fr=aladdin" target="_blank" rel="noopener">维纳</a>合作，但是因种种原因，合作最终没能持续下去。而维纳的学生阿比卜倒是和麦卡洛克等人玩的挺好，其本科毕业论文便是和神经网络相关。</p>
+<p>1949年，神经心理学家赫布提出了“Hebb”规则。该规则认为，如果两个细胞总是同时激活的话，它们之间就有某种关联，同时激活的概率越高，关联度也越高。</p>
+<h3 id="罗森布拉特与感知机"><a href="#罗森布拉特与感知机" class="headerlink" title="罗森布拉特与感知机"></a>罗森布拉特与感知机</h3><p>1957年，实验心理学家罗森布拉特在IBM-704计算机上模拟实现了名为“感知机”的神经网络模型，在理论上证明了单层神经网络在处理线性可分的模式识别问题时，可以收敛。</p>
+<p>但是人工智能先驱明斯基却认为神经网络不能解决人工智能的问题，并和佩珀特一起证明单层神经网络不能解决XOR问题，这对罗森布拉特来说是个致命打击，也让神经网络的研究陷入了低谷。</p>
+<h3 id="神经网络的复兴"><a href="#神经网络的复兴" class="headerlink" title="神经网络的复兴"></a>神经网络的复兴</h3><p>1974年，沃波斯在自己的博士论文中证明了两层神经网络利用后向传播方法，可以解决XOR问题，但是并未得到重视。</p>
+<p>20实际80年代，霍普菲尔德提出了Hopfield网络，可以解决一大类模式识别问题，还可以给出一类组合优化问题的近似解，促成了神经网络的复兴。</p>
+<p>随后在加州大学圣地亚哥分校开展了轰轰烈烈的连接主义运动，其领导者有鲁梅尔哈特、麦克利兰德与辛顿。鲁梅尔哈特是心理学家，<a href="http://people.eecs.berkeley.edu/~jordan/" target="_blank" rel="noopener">乔丹</a>是他的学生，而<a href="http://ai.stanford.edu/~ang/originalHomepage.html" target="_blank" rel="noopener">吴恩达</a>则是乔丹的学生。麦克利兰德之后在斯坦福大学建立了“心、脑、计算研究中心”。辛顿最后到了加拿大多伦多大学计算机系，成为了如今深度学习的领军人物。</p>
+<h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><p><a href="http://www.cs.toronto.edu/~hinton/" target="_blank" rel="noopener">辛顿</a>在2006年发表的两篇文章开辟了这个领域，而在2012年举办的图像识别大赛上则是让深度学习大放异彩，成为了各个领域的关注焦点。</p>
+<h3 id="参考读物"><a href="#参考读物" class="headerlink" title="参考读物"></a>参考读物</h3><p>离散型Hopfield网络：<a href="https://www.researchgate.net/publication/16246447_Neural_Networks_and_Physical_Systems_with_Emergent_Collective_Computational_Abilities" target="_blank" rel="noopener">Neural Networks and Physical Systems with Emergent Collective Computational Abilities</a></p>
+<p>连续型Hopfield网络：<a href="https://www.researchgate.net/publication/19135224_Neural_Computation_of_Decisions_in_Optimization_Problems" target="_blank" rel="noopener">Neural computation of decisions in optimization problems</a></p>
+<p>Hinton发表的两篇文章：</p>
+<p><a href="http://www.dna.caltech.edu/courses/cns187/references/hinton_slakhutdinov2006autoencoders.pdf" target="_blank" rel="noopener">Reducing the Dimensionality of Data with Neural Networks</a></p>
+<p><a href="http://xueshu.baidu.com/usercenter/paper/show?paperid=a165497afe1b09cc42ed7e4720b5fbfa&amp;site=xueshu_se&amp;hitarticle=1" target="_blank" rel="noopener">A Fast Learning Algorithm for Deep Belief Nets</a></p>
+<h2 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h2><h3 id="乔姆斯基-句法分析"><a href="#乔姆斯基-句法分析" class="headerlink" title="乔姆斯基-句法分析"></a>乔姆斯基-句法分析</h3><p>乔姆斯基是结构主义语言学开山哈里斯的学生，在宾夕法尼亚大学获得了本科和硕士学位，之后去了哈佛投奔<a href="https://baike.baidu.com/item/%E8%92%AF%E5%9B%A0/3535835?fr=aladdin" target="_blank" rel="noopener">蒯因</a>。在哈佛期间，发表了自己的第一篇学术论文“句法分析系统”。值得一提的是，乔姆斯基为了免服兵役，回到宾大花费6个星期便拿到了博士学位。</p>
+<p>乔姆斯基认为，所有的语言都有类似的句法结构，并进一步指出语言的结构是内在的，而不是通过经验习得的。乔姆斯基对于语言学科的意义是重大的，《句法结构》是其代表著作。</p>
+<h3 id="机器翻译"><a href="#机器翻译" class="headerlink" title="机器翻译"></a>机器翻译</h3><h4 id="第一次尝试-乔治敦实验"><a href="#第一次尝试-乔治敦实验" class="headerlink" title="第一次尝试-乔治敦实验"></a>第一次尝试-乔治敦实验</h4><p>1953年至1954年，IBM资助美国乔治敦大学进行了第一次机器翻译。该次实验的目标为：将俄文句子翻译成英文，总共定义了6条语法规则，250个单词，主要领域为有机化学。但是之后的机器翻译进展缓慢，1964年成立自动语言处理顾问委员会(ALPAC)，经过两年调研后，ALPAC发布《语言与机器》报告，称机器翻译比人翻译更慢，更不准确，而且成本更高。</p>
+<h4 id="统计学习"><a href="#统计学习" class="headerlink" title="统计学习"></a>统计学习</h4><p>在1988年的计算语言学会议上，IBM TJ Watson研究中心机器翻译小组发表了统计机器翻译的论文，并推出法语/英语的翻译系统CANDIDE。两年后该小组在《计算语言学》杂志上发表论文对他们的工作做了更加理论性的概括。<a href="https://baike.baidu.com/item/%E8%B4%BE%E9%87%8C%E5%B0%BC%E5%85%8B/7851117?fr=aladdin" target="_blank" rel="noopener">贾里尼克</a>与<a href="https://baike.baidu.com/item/%E7%BA%A6%E7%BF%B0%C2%B7%E7%A7%91%E5%85%8B/7868274?fr=aladdin" target="_blank" rel="noopener">柯克</a>是该小组的重要成员。</p>
+<h4 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h4><p>2016年，谷歌使用了循环神经网络RNN完成了序列到序列的学习，并发布了神经机器翻译(GNMT)系统。</p>
+<p>2017年，Facebook使用了卷积神经网络CNN进行序列到序列的学习，相比于谷歌的RNN，在计算速度上有所提升。</p>
+<h3 id="聊天机器人"><a href="#聊天机器人" class="headerlink" title="聊天机器人"></a>聊天机器人</h3><p>ELIZA是世界上第一个真正意义上的聊天机器人，魏森鲍姆是其作者之一，之后科尔比又开发出了PARRY。</p>
+<h3 id="积木世界"><a href="#积木世界" class="headerlink" title="积木世界"></a>积木世界</h3><p><a href="http://hci.stanford.edu/~winograd/shrdlu/" target="_blank" rel="noopener">SHRDLU</a> 系统是<a href="http://hci.stanford.edu/winograd/" target="_blank" rel="noopener">维诺格拉德</a>于1972年在美国麻省理工学院建立的一个用自然语言指挥机器人动作的系统。该系统对话的对象是一个具有简单的“手”和“眼”的玩具机器人，它可以操作放在桌子上的具有不同颜色、尺寸和形状的玩具积木，如立方体、棱锥体、盒子等，机器人能够根据操作人员的命令把这些积木捡起来，移动它们去搭成新的积木结构，在人机对话过程中，操作人员能获得他发给机器人的各种视觉反馈，实时地观察机器人理解语言、执行命令的情况。</p>
+<p>该系统将多种AI技术整合到了一起，除了自然语言理解外，还有规划以及知识表示，具有深刻的学术意义。但是后来维诺格拉德的兴趣逐步转向了人机交互。</p>
+<h3 id="问答系统"><a href="#问答系统" class="headerlink" title="问答系统"></a>问答系统</h3><p>大体上说，问答系统有三个必备的组成部分，第一部分是问题理解，第二部分是知识查询，第三部分是答案生成。第一部分和第三部分是自然语言处理的工作，通过知识图谱被有机地整合到了一起。</p>
+<p>2011年，IBM的沃森在美国电视智力竞赛节目中击败人类选手，获得了百万美元大奖，其背后的知识图谱包括WordNet、Dbpedia、Yago。</p>
+<h3 id="参考读物-1"><a href="#参考读物-1" class="headerlink" title="参考读物"></a>参考读物</h3><p>统计学习下的机器翻译：<a href="https://dl.acm.org/doi/pdf/10.3115/991635.991651?download=true" target="_blank" rel="noopener">A statistical approach to language translation</a></p>
+<h2 id="图灵"><a href="#图灵" class="headerlink" title="图灵"></a>图灵</h2><h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><p>1936年《可计算的数》，奠定了计算机科学的理论基础。</p>
+<p>1948年《智能机器》，此篇文章是英国国家物理实验室（NPL）的内部报告，其中提到了“肉体智能”与“无肉体智能”。</p>
+<p>1950年<a href="http://williamwolff.org/wp-content/uploads/2013/01/turing-03.pdf" target="_blank" rel="noopener">《计算机与智能》</a>。</p>
+]]></content>
+      <categories>
+        <category>人工智能</category>
+        <category>历史</category>
+      </categories>
+      <tags>
+        <tag>人工智能简史</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java工厂模式</title>
+    <url>/2019/10/12/Java%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="创建型模式之工厂模式"><a href="#创建型模式之工厂模式" class="headerlink" title="创建型模式之工厂模式"></a>创建型模式之工厂模式</h1><p>此篇博客简要谈谈创建型模式中的工厂模式，包括简单工厂模式、工厂方法模式以及抽象工厂模式。</p>
+<p>此篇博客主要参考以下文档：</p>
+<p><a href="https://design-patterns.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/</a></p>
+<h2 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h2><h3 id="模式动机"><a href="#模式动机" class="headerlink" title="模式动机"></a>模式动机</h3><p>考虑一个简单的软件应用场景，一个软件系统可以提供多个外观不同的按钮（如圆形按钮、矩形按钮、菱形按钮等）， 这些按钮都源自同一个基类，不过在继承基类后不同的子类修改了部分属性从而使得它们可以呈现不同的外观，如果我们希望在使用这些按钮时，不需要知道这些具体按钮类的名字，只需要知道表示该按钮类的一个参数，并提供一个调用方便的方法，把该参数传入方法即可返回一个相应的按钮对象，此时，就可以使用简单工厂模式。</p>
+<a id="more"></a>
+<h3 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h3><p>简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例，具体实现时可以通过调用不同方法创建实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。</p>
+<h3 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h3><p>简单工厂模式包含如下角色：</p>
+<ul>
+<li><p>Factory：工厂角色</p>
+<p>工厂角色负责实现创建所有实例的内部逻辑</p>
+</li>
+<li><p>Product：抽象产品角色</p>
+<p>抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口</p>
+</li>
+<li><p>ConcreteProduct：具体产品角色</p>
+<p>具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。</p>
+</li>
+</ul>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/SimpleFactory.jpg" alt="../_images/SimpleFactory.jpg"></p>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><p>考虑需要一辆车(Car)，车的品牌可以随便我们挑(不同品牌的车继承自Car类)，只需要和前台服务小姐姐说一声， 然后前台将品牌信息传递给车厂(参数传递)，车厂再根据此参数制造一辆新车(new一个Car实例)，最后便可以开车出去旅游了，最终的UML类图如下：</p>
+<p><img src="CarFactory.png" alt="CarFactory"></p>
+<p>车辆基类Car:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>宝马Car:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BM</span> <span class="keyword">implements</span> <span class="title">Car</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"我是宝马"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比亚迪Car:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BYD</span> <span class="keyword">implements</span> <span class="title">Car</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"我是比亚迪"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>造车工厂:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">createCar</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(name.equals(<span class="string">"宝马"</span>))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> BM();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(name.equals(<span class="string">"比亚迪"</span>))&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> BYD();</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Factory factory = <span class="keyword">new</span> Factory();</span><br><span class="line">		Car car = factory.createCar(<span class="string">"宝马"</span>); <span class="comment">//传递不同的参数获得不同品牌车辆</span></span><br><span class="line">		car.move();</span><br><span class="line">		Car car2 = factory.createCar(<span class="string">"比亚迪"</span>);</span><br><span class="line">		car2.move();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模式优点"><a href="#模式优点" class="headerlink" title="模式优点"></a>模式优点</h3><ul>
+<li>将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。</li>
+<li>客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可。</li>
+</ul>
+<h3 id="模式缺点"><a href="#模式缺点" class="headerlink" title="模式缺点"></a>模式缺点</h3><ul>
+<li>由于工厂类集中了所有产品创建逻辑，一旦不能正常工作，整个系统都要受到影响。</li>
+<li>使用简单工厂模式将会增加系统中类的个数，在一定程序上增加了系统的复杂度和理解难度。</li>
+<li>系统扩展困难，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>在以下情况下可以使用简单工厂模式：</p>
+<ul>
+<li>工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。</li>
+<li>客户端只知道传入工厂类的参数，对于如何创建对象不关心：客户端既不需要关心创建细节，甚至连类名都不需要记住，只需要知道类型所对应的参数。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>简单工厂模式的要点在于：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。</li>
+<li>简单工厂模式最大的优点在于实现对象的创建和对象的使用分离，将对象的创建交给专门的工厂类负责，但是其最大的缺点在于工厂类不够灵活，增加新的具体产品需要修改工厂类的判断逻辑代码，而且产品较多时，工厂方法代码将会非常复杂。</li>
+<li>简单工厂模式适用情况包括：工厂类负责创建的对象比较少；客户端只知道传入工厂类的参数，对于如何创建对象不关心。</li>
+</ul>
+<h2 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h2><h3 id="模式动机-1"><a href="#模式动机-1" class="headerlink" title="模式动机"></a>模式动机</h3><p>现在对该系统进行修改，不再设计一个按钮工厂类来统一负责所有产品的创建，而是将具体按钮的创建过程交给专门的工厂子类去完成，我们先定义一个抽象的按钮工厂类，再定义具体的工厂类来生成圆形按钮、矩形按钮、菱形按钮等，它们实现在抽象按钮工厂类中定义的方法。这种抽象化的结果使这种结构可以在不修改具体工厂类的情况下引进新的产品，如果出现新的按钮类型，只需要为这种新类型的按钮创建一个具体的工厂类就可以获得该新按钮的实例，这一特点无疑使得工厂方法模式具有超越简单工厂模式的优越性，更加符合“开闭原则”。</p>
+<h3 id="模式定义-1"><a href="#模式定义-1" class="headerlink" title="模式定义"></a>模式定义</h3><p>工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。</p>
+<h3 id="模式结构-1"><a href="#模式结构-1" class="headerlink" title="模式结构"></a>模式结构</h3><p>工厂方法模式包含如下角色：</p>
+<ul>
+<li>Product：抽象产品</li>
+<li>ConcreteProduct：具体产品</li>
+<li>Factory：抽象工厂</li>
+<li>ConcreteFactory：具体工厂</li>
+</ul>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/FactoryMethod.jpg" alt="../_images/FactoryMethod.jpg"></p>
+<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><p>考虑需要一辆车(Car)，车的品牌可以随便我们挑(不同品牌的车继承自Car类)，只需要和前台服务小姐姐说一声， 然后前台依据不同的品牌通知相应的车厂，然后车厂制造一辆新车(new一个Car实例)，最后便可以开车出去旅游了，最终的UML类图如下：</p>
+<p><img src="FactoryMethod.png" alt="FactoryMethod"></p>
+<p>车辆类的结构和上述简单工厂中的一样，但是在工厂方法中不同的品牌对应不同的工厂。</p>
+<p>造车工厂基类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">	<span class="function">Car <span class="title">createCar</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>宝马车厂:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BMFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">createCar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> BM();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比亚迪车厂:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BYDFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">createCar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> BYD();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Factory bmFactory = <span class="keyword">new</span> BMFactory(); <span class="comment">//不同车厂构造不同品牌的车辆</span></span><br><span class="line">		Factory bydFactory = <span class="keyword">new</span> BYDFactory();</span><br><span class="line">		Car car = bmFactory.createCar();</span><br><span class="line">		Car car2 = bydFactory.createCar();</span><br><span class="line">		car.move();</span><br><span class="line">		car2.move();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模式优点-1"><a href="#模式优点-1" class="headerlink" title="模式优点"></a>模式优点</h3><ul>
+<li>在工厂方法模式中，工厂方法用来创建客户所需要的产品，同时还向客户隐藏了哪种具体产品类将被实例化这一细节，用户只需要关心所需产品对应的工厂，无须关心创建细节，甚至无须知道具体产品类的类名。</li>
+<li>使用工厂方法模式的另一个优点是在系统中加入新产品时，无须修改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其他的具体工厂和具体产品，而只要添加一个具体工厂和具体产品就可以了。这样，系统的可扩展性也就变得非常好，完全符合“开闭原则”。</li>
+</ul>
+<h3 id="模式缺点-1"><a href="#模式缺点-1" class="headerlink" title="模式缺点"></a>模式缺点</h3><ul>
+<li>在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的个数将成对增加，在一定程度上增加了系统的复杂度，有更多的类需要编译和运行，会给系统带来一些额外的开销。</li>
+</ul>
+<h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><p>在以下情况下可以使用工厂方法模式：</p>
+<ul>
+<li>一个类不知道它所需要的对象的类：在工厂方法模式中，客户端不需要知道具体产品类的类名，只需要知道所对应的工厂即可，具体的产品对象由具体工厂类创建；客户端需要知道创建具体产品的工厂类。</li>
+<li>一个类通过其子类来指定创建哪个对象：在工厂方法模式中，对于抽象工厂类只需要提供一个创建产品的接口，而由其子类来确定具体要创建的对象，利用面向对象的多态性和里氏代换原则，在程序运行时，子类对象将覆盖父类对象，从而使得系统更容易扩展。</li>
+<li>将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定，可将具体工厂类的类名存储在配置文件或数据库中。</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>工厂方法模式是简单工厂模式的进一步抽象和推广。由于使用了面向对象的多态性，工厂方法模式保持了简单工厂模式的优点，而且克服了它的缺点。在工厂方法模式中，核心的工厂类不再负责所有产品的创建，而是将具体创建工作交给子类去做。这个核心类仅仅负责给出具体工厂必须实现的接口，而不负责产品类被实例化这种细节，这使得工厂方法模式可以允许系统在不修改工厂角色的情况下引进新产品。</li>
+<li>工厂方法模式的主要优点是增加新的产品类时无须修改现有系统，并封装了产品对象的创建细节，系统具有良好的灵活性和可扩展性；其缺点在于增加新产品的同时需要增加新的工厂，导致系统类的个数成对增加，在一定程度上增加了系统的复杂性。</li>
+<li>工厂方法模式适用情况包括：一个类不知道它所需要的对象的类；一个类通过其子类来指定创建哪个对象；将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定。</li>
+</ul>
+<h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><h3 id="模式动机-2"><a href="#模式动机-2" class="headerlink" title="模式动机"></a>模式动机</h3><ul>
+<li><p>在工厂方法模式中具体工厂负责生产具体的产品，每一个具体工厂对应一种具体产品，工厂方法也具有唯一性，一般情况下，一个具体工厂中只有一个工厂方法或者一组重载的工厂方法。但是有时候我们需要一个工厂可以提供多个产品对象，而不是单一的产品对象。</p>
+<blockquote>
+<p>为了更清晰地理解工厂方法模式，需要先引入两个概念：</p>
+<ul>
+<li><strong>产品等级结构</strong> ：产品等级结构即产品的继承结构，如一个抽象类是电视机，其子类有海尔电视机、海信电视机、TCL电视机，则抽象电视机与具体品牌的电视机之间构成了一个产品等级结构，抽象电视机是父类，而具体品牌的电视机是其子类。</li>
+<li><strong>产品族</strong> ：在抽象工厂模式中，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品，如海尔电器工厂生产的海尔电视机、海尔电冰箱，海尔电视机位于电视机产品等级结构中，海尔电冰箱位于电冰箱产品等级结构中。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>当系统所提供的工厂所需生产的具体产品并不是一个简单的对象，而是多个位于不同产品等级结构中属于不同类型的具体产品时需要使用抽象工厂模式。</p>
+</li>
+<li><p>抽象工厂模式是所有形式的工厂模式中最为抽象和最具一般性的一种形态。</p>
+</li>
+<li><p>抽象工厂模式与工厂方法模式最大的区别在于，工厂方法模式针对的是一个产品等级结构，而抽象工厂模式则需要面对多个产品等级结构，一个工厂等级结构可以负责多个不同产品等级结构中的产品对象的创建 。当一个工厂等级结构可以创建出分属于不同产品等级结构的一个产品族中的所有对象时，抽象工厂模式比工厂方法模式更为简单、有效率。</p>
+</li>
+</ul>
+<h3 id="模式定义-2"><a href="#模式定义-2" class="headerlink" title="模式定义"></a>模式定义</h3><p>抽象工厂模式(Abstract Factory Pattern)：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为Kit模式，属于对象创建型模式。</p>
+<h3 id="模式结构-2"><a href="#模式结构-2" class="headerlink" title="模式结构"></a>模式结构</h3><p>抽象工厂模式包含如下角色：</p>
+<ul>
+<li>AbstractFactory：抽象工厂</li>
+<li>ConcreteFactory：具体工厂</li>
+<li>AbstractProduct：抽象产品</li>
+<li>Product：具体产品</li>
+</ul>
+<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/AbatractFactory.jpg" alt="../_images/AbatractFactory.jpg"></p>
+<h3 id="代码分析-1"><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h3><p>考虑需要组装一辆车，包括引擎、坐垫以及轮胎，则好引擎、好坐垫以及好轮胎构成一个产品族，坏引擎、坏坐垫以及坏轮胎构成一个产品族；好引擎和坏引擎继承于发动机，属于同个产品等级结构，坐垫以及轮胎同理。</p>
+<p><img src="AbstractFactory.png" alt="AbstractFactory"></p>
+<p>引擎类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HighEngine</span> <span class="keyword">implements</span> <span class="title">Engine</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"转得快"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LowEngine</span> <span class="keyword">implements</span> <span class="title">Engine</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"转得慢"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>坐垫类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Seat</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">seat</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HighSeat</span> <span class="keyword">implements</span> <span class="title">Seat</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">seat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"坐的舒服"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LowSeat</span> <span class="keyword">implements</span> <span class="title">Seat</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">seat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"坐的想死"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>轮胎类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Tyre</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HighTyre</span> <span class="keyword">implements</span> <span class="title">Tyre</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"好轮胎跑得快"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LowTyre</span> <span class="keyword">implements</span> <span class="title">Tyre</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"坏轮胎跑得慢"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>工厂类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">	<span class="function">Engine <span class="title">createEngine</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">Seat <span class="title">createSeat</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">Tyre <span class="title">createTyre</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HighFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Engine <span class="title">createEngine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> HighEngine();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Seat <span class="title">createSeat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> HighSeat();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Tyre <span class="title">createTyre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> HighTyre();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LowFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Engine <span class="title">createEngine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> LowEngine();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Seat <span class="title">createSeat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> LowSeat();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Tyre <span class="title">createTyre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> LowTyre();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Factory factory = <span class="keyword">new</span> HighFactory(); <span class="comment">//创建好坏两种产品族</span></span><br><span class="line">		Engine engine = factory.createEngine();</span><br><span class="line">		engine.run();</span><br><span class="line">		Factory factory2 = <span class="keyword">new</span> LowFactory();</span><br><span class="line">		Engine engine2 = factory2.createEngine();</span><br><span class="line">		engine2.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模式优点-2"><a href="#模式优点-2" class="headerlink" title="模式优点"></a>模式优点</h3><ul>
+<li>抽象工厂模式隔离了具体类的生成，使得客户并不需要知道什么被创建。由于这种隔离，更换一个具体工厂就变得相对容易。所有的具体工厂都实现了抽象工厂中定义的那些公共接口，因此只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为。另外，应用抽象工厂模式可以实现高内聚低耦合的设计目的，因此抽象工厂模式得到了广泛的应用。</li>
+<li>当一个产品族中的多个对象被设计成一起工作时，它能够保证客户端始终只使用同一个产品族中的对象。这对一些需要根据当前环境来决定其行为的软件系统来说，是一种非常实用的设计模式。</li>
+<li>增加新的具体工厂和产品族很方便，无须修改已有系统，符合“开闭原则”。</li>
+</ul>
+<h3 id="模式缺点-2"><a href="#模式缺点-2" class="headerlink" title="模式缺点"></a>模式缺点</h3><ul>
+<li>在添加新的产品对象时，难以扩展抽象工厂来生产新种类的产品，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。</li>
+<li>开闭原则的倾斜性（增加新的工厂和产品族容易，增加新的产品等级结构麻烦）。</li>
+</ul>
+<h3 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h3><p>在以下情况下可以使用抽象工厂模式：</p>
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>抽象工厂模式是所有形式的工厂模式中最为抽象和最具一般性的一种形态。抽象工厂模式与工厂方法模式最大的区别在于，工厂方法模式针对的是一个产品等级结构，而抽象工厂模式则需要面对多个产品等级结构。</li>
+<li>抽象工厂模式的主要优点是隔离了具体类的生成，使得客户并不需要知道什么被创建，而且每次可以通过具体工厂类创建一个产品族中的多个对象，增加或者替换产品族比较方便，增加新的具体工厂和产品族很方便；主要缺点在于增加新的产品等级结构很复杂，需要修改抽象工厂和所有的具体工厂类，对“开闭原则”的支持呈现倾斜性。</li>
+<li>抽象工厂模式适用情况包括：一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节；系统中有多于一个的产品族，而每次只使用其中某一产品族；属于同一个产品族的产品将在一起使用；系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+<h2 id="三种方式对比"><a href="#三种方式对比" class="headerlink" title="三种方式对比"></a>三种方式对比</h2><p>总的来说，三种工厂模式核心要点各不相同。在简单工厂中，一个工厂可以通过不同的参数创建不同的产品；在工厂方法中，不同的产品则要通过不同的工厂创建，相对于简单工厂而言，扩展性更强，但同时会增加类太多难以管理的风险；在抽象工厂中，其主要关注产品族的创建，而非单个产品，增加新的具体工厂和产品族很方便，但是增加新的产品等级结构时很复杂。</p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>创建型模式</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+</search>
